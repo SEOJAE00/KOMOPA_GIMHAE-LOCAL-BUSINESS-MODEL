@@ -522,7 +522,7 @@ button:focus:not(:focus-visible){outline:none}
 .trbtn{display:inline-flex;align-items:center;gap:5px;margin:6px 16px 0;font-size:var(--fs-cap);font-weight:800;color:var(--river)}
 .ptags{padding:8px 16px 16px;display:flex;gap:8px;flex-wrap:wrap;font-size:var(--fs-cap);font-weight:800;color:var(--clay)}
 .fab{position:absolute;right:18px;bottom:calc(var(--tab-h) + 18px);width:58px;height:58px;border-radius:20px;background:var(--iron);color:var(--yellow);display:none;place-items:center;box-shadow:0 16px 30px -12px rgba(42,28,21,.9);z-index:20;transition:transform .2s}
-.app[data-tab="fest"] .fab{display:grid;animation:popIn .5s var(--spring)}
+.app[data-tab="fest"][data-ft="comm"] .fab{display:grid;animation:popIn .5s var(--spring)}
 .fab:active{transform:scale(.9)}
 .rrow{display:grid;grid-template-columns:28px 40px 1fr auto;align-items:center;gap:10px;padding:9px 0}
 .rk{font-family:var(--serif);font-weight:700;font-size:var(--fs-sub);color:#B39D86;text-align:center}
@@ -968,6 +968,13 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
 .pk-box svg{width:100%;display:block}
 .m-rw{width:52px;height:50px}
 
+/* 축제 탭 토글 */
+.fseg{position:sticky;top:0;z-index:5;margin:10px 0 0;height:48px;background:rgba(239,229,212,.92);backdrop-filter:blur(8px);box-shadow:0 8px 18px -14px rgba(58,37,28,.5)}
+.fseg .seg-thumb{height:40px}
+.fseg button.on{color:var(--ras-d)}
+.fpane[hidden]{display:none}
+#paneComm .live-card{margin-top:14px}
+
 </style>
 </head>
 <body>
@@ -989,7 +996,7 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
       <p class="lead" data-i18n="brand_p"></p>
       <ul class="feats" id="feats">
         <li><i data-ic="berry" data-s="18"></i><span data-i18n="feat1"></span></li>
-        <li><i data-ic="bike" data-s="18"></i><span data-i18n="feat2"></span></li>
+        <li><i data-ic="jar" data-s="18"></i><span data-i18n="feat2"></span></li>
         <li><i data-ic="cup" data-s="18"></i><span data-i18n="feat3"></span></li>
         <li><i data-ic="gift" data-s="18"></i><span data-i18n="feat4"></span></li>
       </ul>
@@ -1066,22 +1073,27 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
 
         <!-- ② 축제 -->
         <section class="screen" id="scr-fest">
-          <div class="fest-hero rise" id="festHero"></div>
-          <p class="fest-off rise" id="festOff"></p>
-          <div class="card rise" id="festMy"></div>
-          <div class="card rise"><div class="card-head"><h3 data-i18n="fe_progs"></h3><small>PROGRAMS</small></div><div class="progs" id="progs"></div></div>
-          <div class="card rise" id="festShuttle"></div>
-          <div class="card rise"><div class="card-head"><h3 data-i18n="fe_season"></h3><small>SEASON</small></div><div class="season" id="season"></div></div>
-          <div class="live-card rise">
-            <div class="lc-top"><span class="live"></span><span data-i18n="fe_live"></span></div>
-            <div class="lc-num"><span class="odo" id="odo"></span><em data-i18n="fe_unit"></em></div>
-            <small data-i18n="demo"></small>
-            <svg class="lc-spark" id="spark" viewBox="0 0 118 40"><defs><linearGradient id="sparkG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFDA6B" stop-opacity=".35"/><stop offset="1" stop-color="#FFDA6B" stop-opacity="0"/></linearGradient></defs><path class="ar"/><path class="ln"/></svg>
+          <div class="seg fseg" id="festSeg" role="tablist"><i class="seg-thumb"></i><button class="on" data-k="fest" role="tab"><i data-ic="berry" data-s="17"></i><span data-i18n="fe_seg_fest"></span></button><button data-k="comm" role="tab"><i data-ic="chat" data-s="17"></i><span data-i18n="fe_seg_comm"></span></button></div>
+          <div class="fpane" id="paneFest">
+            <div class="fest-hero rise" id="festHero"></div>
+            <p class="fest-off rise" id="festOff"></p>
+            <div class="card rise" id="festMy"></div>
+            <div class="card rise"><div class="card-head"><h3 data-i18n="fe_progs"></h3><small>PROGRAMS</small></div><div class="progs" id="progs"></div></div>
+            <div class="card rise" id="festShuttle"></div>
+            <div class="card rise"><div class="card-head"><h3 data-i18n="fe_season"></h3><small>SEASON</small></div><div class="season" id="season"></div></div>
+            <div class="card rise" id="festStd"></div>
           </div>
-          <div class="card rise" id="festStd"></div>
-          <div class="rev-head rise" id="revHead"><h3 data-i18n="fe_reviews"></h3><small>REVIEWS</small></div>
-          <div class="tags rise" id="tagRow"></div>
-          <div id="feed"></div>
+          <div class="fpane" id="paneComm" hidden>
+            <div class="live-card rise">
+              <div class="lc-top"><span class="live"></span><span data-i18n="fe_live"></span></div>
+              <div class="lc-num"><span class="odo" id="odo"></span><em data-i18n="fe_unit"></em></div>
+              <small data-i18n="demo"></small>
+              <svg class="lc-spark" id="spark" viewBox="0 0 118 40"><defs><linearGradient id="sparkG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFDA6B" stop-opacity=".35"/><stop offset="1" stop-color="#FFDA6B" stop-opacity="0"/></linearGradient></defs><path class="ar"/><path class="ln"/></svg>
+            </div>
+            <div class="rev-head rise" id="revHead"><h3 data-i18n="fe_reviews"></h3><small>COMMUNITY</small></div>
+            <div class="tags rise" id="tagRow"></div>
+            <div id="feed"></div>
+          </div>
         </section>
 
         <!-- ④ 마이페이지 -->
@@ -1200,11 +1212,11 @@ const I = {
   brand_h1: ['산딸기 하면<br>김해', 'Raspberries?<br>Think Gimhae'],
   brand_p: ['김해공항에서 받는 패스 한 장으로 산딸기 농장 축제에서 따고 만들고, 레일바이크와 Fresh 산딸기 메뉴를 즐기고, 봉투를 반납해 모은 스탬프 5개로 산딸기 선물 상자를 받아 가는 김해 여행 패스.', 'One pass from Gimhae Airport: pick and make at the raspberry farm festival, enjoy the rail bike and Fresh raspberry menus, return your bags, and turn five stamps into a raspberry gift box.'],
   feat1: ['산딸기 농장 축제', 'Raspberry farm festival'],
-  feat2: ['레일바이크·어트랙션', 'Rail bike & attractions'],
+  feat2: ['직접 따기·만들기', 'Pick & make'],
   feat3: ['Fresh 산딸기 메뉴', 'Fresh raspberry menus'],
   feat4: ['봉투 반납·선물 상자', 'Bag returns & gift box'],
   feat1s: ['농장 축제', 'Farm festival'],
-  feat2s: ['어트랙션', 'Attractions'],
+  feat2s: ['따기·만들기', 'Pick & make'],
   feat3s: ['Fresh 메뉴', 'Fresh menus'],
   feat4s: ['선물 상자', 'Gift box'],
   qr_label: ['휴대폰으로 열기', 'Open on your phone'],
@@ -1369,7 +1381,9 @@ const I = {
   fe_first: ['2월 말 첫 출하', 'First harvest, late Feb'],
   fe_today: ['오늘', 'Today'],
   fe_offseason: ['지금은 비시즌이에요. 2월 말 첫 출하를 기다려요 — 화면은 5월 축제 주말 데모예요', 'It’s off-season now, waiting for the late-February harvest. This screen demos a May festival weekend'],
-  fe_reviews: ['축제 후기', 'Festival reviews'],
+  fe_reviews: ['산딸기 여행 후기', 'Raspberry trip posts'],
+  fe_seg_fest: ['축제', 'Festival'],
+  fe_seg_comm: ['커뮤니티', 'Community'],
   fe_std: ['Fresh 산딸기 메뉴 기준', 'Fresh raspberry menu standard'],
   fe_std_sub: ['기준을 통과한 메뉴만 패스에 올라가요', 'Only menus that pass are listed'],
   m_jan: ['1월', 'Jan'], m_feb: ['2월', 'Feb'], m_mar: ['3월', 'Mar'], m_apr: ['4월', 'Apr'], m_may: ['5월', 'May'], m_jun: ['6월', 'Jun'], m_jul: ['7월', 'Jul'],
@@ -1401,22 +1415,22 @@ const I = {
   tag_all: ['전체', 'All'],
   tag_festival: ['농장축제', 'FarmFestival'],
   tag_fresh: ['Fresh메뉴', 'FreshMenu'],
-  tag_railbike: ['레일바이크', 'RailBike'],
+  tag_make: ['만들기', 'JamMaking'],
   tag_clean: ['클린스탬프', 'CleanStamp'],
   tag_giftbox: ['선물상자', 'GiftBox'],
-  write_title: ['축제 후기 남기기', 'Share a festival moment'],
+  write_title: ['산딸기 후기 남기기', 'Share a raspberry moment'],
   write_ph: ['오늘 김해에서 어떤 순간이 있었나요?', 'What happened in Gimhae today?'],
   write_default: ['바구니 가득 산딸기 🍓 다 먹은 컵은 라즈베리 쓰레기 봉투에!', 'A basket full of raspberries 🍓 Empty cups go in my Raspberry trash bag!'],
   write_photo: ['사진 바꾸기', 'Change photo'],
   write_post: ['게시하기', 'Post'],
   write_done: ['게시했어요!', 'Posted!'],
 
-  pass_2day: ['2일권', '2-DAY'],
+  pass_2day: ['1일권', '1-DAY'],
   pass_valid: ['남은 시간', 'TIME LEFT'],
   pass_holder: ['이용자', 'HOLDER'],
   pass_tap: ['탭하여 뒤집기', 'Tap to flip'],
   pass_incl: ['패스 구성 · 15,000원', 'What’s inside · ₩15,000'],
-  inc1: ['이동 · 경전철·버스 2일 + 축제 셔틀', 'Move · 2-day rail & bus + festival shuttle'],
+  inc1: ['이동 · 경전철·버스 1일 + 축제 셔틀', 'Move · 1-day rail & bus + festival shuttle'],
   inc2: ['축제 · 따기 2,000원 할인 + 팜 스탬프', 'Festival · ₩2,000 off picking + Farm Stamp'],
   inc3: ['즐기기 · 어트랙션 할인 + 메뉴 쿠폰 3장', 'Enjoy · attraction deals + 3 menu coupons'],
   inc4: ['반납 · QR 봉투 3장 → 클린 스탬프', 'Return · 3 QR bags → Clean Stamps'],
@@ -1434,12 +1448,12 @@ const I = {
   badges: ['배지', 'Badges'],
   b_farm: ['산딸기 피커', 'Berry Picker'],
   b_taste: ['디저트 헌터', 'Dessert Hunter'],
-  b_rail: ['레일바이커', 'Rail Biker'],
+  b_make: ['잼 메이커', 'Jam Maker'],
   b_clean: ['클린 트래블러', 'Clean Traveler'],
   b_set: ['라즈베리 콜렉터', 'Raspberry Collector'],
   b_farm_d: ['팜 1/1', 'Farm 1/1'],
   b_taste_d: ['테이스트 2/2', 'Taste 2/2'],
-  b_rail_d: ['레일파크', 'Rail Park'],
+  b_make_d: ['만들기 체험', 'Make activity'],
   b_clean_d: ['반납 2/2', 'Returns 2/2'],
   b_set_d: ['선물 상자', 'Gift box'],
   menu_rules: ['봉투 반납 규칙', 'Bag return rules'],
@@ -1461,7 +1475,7 @@ const I = {
   n_clean: ['봉투를 {n}번 더 반납하면 건조 산딸기가 완성돼요', 'Return {n} more bag(s) to finish the dried berries'],
   n_done: ['산딸기 선물 상자 완성! 수령 QR을 확인하세요', 'Gift box complete! Check your pickup QR'],
   n_shuttle: ['축제 셔틀 {from} → {to} · {t} 출발', 'Festival shuttle {from} → {to} · leaves {t}'],
-  n_sunset: ['오늘의 추천: 레일파크 ‘왕의 노을’ — 패스 할인', 'Today’s pick: the Rail Park “King’s Sunset” — pass discount'],
+  n_peak: ['오늘의 추천: 상동 농장 산딸기 당도 최고 — 오전에 따 보세요', 'Today’s pick: Sangdong berries at peak sweetness — pick in the morning'],
   n_coupon: ['메뉴 쿠폰 {n}장 — 율하 산딸기 카페 라떼 2,000원 할인', '{n} menu coupon(s) — ₩2,000 off a Yulha raspberry latte'],
   lang_changed: ['한국어로 바꿨어요', 'Switched to English'],
 
@@ -1550,16 +1564,12 @@ const PLACES = [
       en: 'Heated greenhouses, so berries ripen first here, from late February, and picking runs even on rainy weekends. Shuttles from Buram Station.' } },
   { id: 'railpark', cat: 'attr', stamp: 'taste', ret: true, major: true, x: 700, y: 186,
     name: { ko: '김해낙동강레일파크', en: 'Gimhae Nakdonggang Rail Park' }, short: { ko: '낙동강 레일바이크', en: 'Rail Park' },
-    desc: { ko: '낙동강 옛 철교 위를 달리는 레일바이크. 패스를 보여 주면 할인되고, 주말엔 ‘왕의 노을’ 선셋 운행도 있어요.',
-      en: 'Rail bikes over the old Nakdong River bridge. Show your pass for a discount; on weekends there’s also the “King’s Sunset” ride.' } },
+    desc: { ko: '낙동강 옛 철교 위를 달리는 레일바이크. 패스를 보여 주면 할인되고, 바로 옆 열차카페에서 산딸기 에이드로 쉬어 가요.',
+      en: 'Rail bikes over the old Nakdong River bridge. Show your pass for a discount, then rest with a raspberry ade at the train café next door.' } },
   { id: 'traincafe', cat: 'menu', stamp: 'taste', ret: true, menu: true, x: 642, y: 236,
     name: { ko: '레일파크 열차카페 (제휴 예시)', en: 'Rail Park Train Café (partner sample)' }, short: { ko: '열차카페', en: 'Train Café' },
     desc: { ko: '객차를 꾸민 레일파크의 열차카페. 제휴하면 산딸기 에이드와 케이크를 메뉴 쿠폰으로 즐겨요.',
       en: 'The Rail Park’s café in a train car. As a partner, it would serve raspberry ade and cake you can get with a menu coupon.' } },
-  { id: 'theme', cat: 'attr', stamp: 'taste', x: 792, y: 556,
-    name: { ko: '김해가야테마파크', en: 'Gimhae Gaya Theme Park' }, short: { ko: '가야테마파크', en: 'Gaya Theme Park' },
-    desc: { ko: '분성산 자락에서 가야 왕국의 생활과 문화를 보고 입고 만들어 보는 테마파크. 패스로 입장 할인을 받아요.',
-      en: 'See, wear and make Gaya kingdom culture on the slopes of Bunseongsan. Your pass gets an admission discount.' } },
   { id: 'cafe_yh', cat: 'menu', stamp: 'taste', ret: true, menu: true, major: true, x: 470, y: 990,
     name: { ko: '율하 산딸기 카페 (예시)', en: 'Yulha Raspberry Café (sample)' }, short: { ko: '율하 산딸기 카페', en: 'Yulha Café' },
     desc: { ko: '장유 율하 카페거리의 제휴 카페 예시. 산딸기 라떼·에이드를 메뉴 쿠폰으로 2,000원 할인받고, 봉투도 여기서 반납해요.',
@@ -1580,14 +1590,6 @@ const PLACES = [
     name: { ko: '김해 산딸기 기념품 가게 (예시)', en: 'Gimhae Raspberry Gift Shop (sample)' }, short: { ko: '산딸기 기념품 가게', en: 'Raspberry Gift Shop' },
     desc: { ko: '김해 농가에서 만든 산딸기 잼·초콜릿·건조 산딸기를 맛보고 사는 가게 예시. 선물 상자 구성품을 미리 볼 수 있어요.',
       en: 'A sample shop where you taste and buy jam, chocolate and dried berries made by Gimhae farms: a preview of the gift box.' } },
-  { id: 'suro', cat: 'sight', major: true, x: 586, y: 612,
-    name: { ko: '수로왕릉', en: 'Royal Tomb of King Suro' }, short: { ko: '수로왕릉', en: 'King Suro’s Tomb' },
-    desc: { ko: '금관가야를 세운 김수로왕의 무덤. 정문의 물고기 한 쌍(쌍어문)을 찾아보세요. 산딸기 가게들이 모인 원도심 한가운데예요.',
-      en: 'Tomb of King Suro, founder of Geumgwan Gaya. Find the twin-fish carving on the gate, right in the old town among the raspberry shops.' } },
-  { id: 'museum', cat: 'sight', ret: true, x: 612, y: 528,
-    name: { ko: '국립김해박물관', en: 'Gimhae National Museum' }, short: { ko: '국립김해박물관', en: 'National Museum' },
-    desc: { ko: '가야의 토기와 철기를 한자리에서 만나는 박물관. 안내데스크가 쓰레기 봉투 반납처예요 (서비스 예정).',
-      en: 'Gaya pottery and ironware in one place. The info desk takes trash bags (planned).' } },
   { id: 'info', cat: 'return', ret: true, x: 524, y: 668,
     name: { ko: '김해관광안내소', en: 'Gimhae Tourist Info Center' }, short: { ko: '관광안내소', en: 'Tourist Info' },
     desc: { ko: '다국어 여행 안내와 쓰레기 봉투 반납. 축제 셔틀 시간표와 웰컴 키트 분실도 여기서 도와드려요.',
@@ -1630,7 +1632,7 @@ const PROGRAMS = [
   { id: 'pick', ic: 'basket', book: true, place: 'farm_sd', name: { ko: '직접 따기', en: 'Pick your own' }, desc: { ko: '바구니 가득 직접 따서 200g 가져가기', en: 'Fill a basket, take 200 g home' }, dur: { ko: '60분', en: '60 min' } },
   { id: 'make', ic: 'jar', book: true, place: 'farm_sd', name: { ko: '만들기', en: 'Make' }, desc: { ko: '딴 산딸기로 잼이나 초콜릿 만들기', en: 'Jam or chocolate from your berries' }, dur: { ko: '50분', en: '50 min' } },
   { id: 'market', ic: 'shop', place: 'farm_sd', name: { ko: '디저트 마켓', en: 'Dessert market' }, desc: { ko: '동네 카페·빵집 팝업에서 메뉴 쿠폰 사용', en: 'Local café & bakery pop-ups — use menu coupons' } },
-  { id: 'sunset', ic: 'sunset', place: 'railpark', name: { ko: '노을 레일바이크', en: 'Sunset rail bike' }, desc: { ko: '농장 다음엔 레일파크 ‘왕의 노을’', en: 'After the farm: the Rail Park “King’s Sunset” ride' } },
+  { id: 'rail', ic: 'bike', place: 'railpark', name: { ko: '산딸기 레일바이크', en: 'Raspberry rail bike' }, desc: { ko: '농장 다음엔 레일바이크 + 열차카페 산딸기 에이드', en: 'After the farm: rail bike + raspberry ade at the train café' } },
 ];
 const SLOTS = ['10:00', '11:30', '13:30', '15:00', '16:30'];
 const FULL = { sat: ['11:30'], sun: ['13:30'] };
@@ -1651,7 +1653,7 @@ const POSTS = [
     time: { ko: '12분 전', en: '12 min ago' },
     orig: { lang: 'en', text: 'Picked my first basket of Gimhae raspberries 🍓 Got the Farm Stamp, and the empty juice cup went straight into my Raspberry trash bag.' },
     tr: { ko: '김해 산딸기 첫 바구니를 직접 땄어요 🍓 팜 스탬프 받고, 다 마신 주스 컵은 바로 라즈베리 쓰레기 봉투에 넣었어요.' } },
-  { id: 'p2', user: 'Minh', cc: 'VN', color: '#7FA36B', place: 'farm_dd', scene: 'jam', stamp: 'farm', likes: 121, comments: 9, tags: ['festival'],
+  { id: 'p2', user: 'Minh', cc: 'VN', color: '#7FA36B', place: 'farm_dd', scene: 'jam', stamp: 'farm', likes: 121, comments: 9, tags: ['festival', 'make'],
     time: { ko: '35분 전', en: '35 min ago' },
     orig: { lang: 'vi', text: 'Tự tay làm mứt mâm xôi từ quả vừa hái! Thơm quá, mang về làm quà luôn.' },
     tr: { ko: '방금 딴 산딸기로 잼을 직접 만들었어요! 향이 정말 좋아서 선물로 가져가요.', en: 'Made raspberry jam with the berries I just picked! It smells amazing — taking it home as a gift.' } },
@@ -1659,16 +1661,16 @@ const POSTS = [
     time: { ko: '1시간 전', en: '1 h ago' },
     orig: { lang: 'ms', text: 'Latte raspberry di Yulha. Menu Fresh: tiada babi, alkohol atau gelatin, jadi saya tak perlu risau. Kupon jimat ₩2,000 ✨' },
     tr: { ko: '율하에서 산딸기 라떼. Fresh 메뉴라 돼지고기·알코올·젤라틴이 없어서 걱정 없었어요. 쿠폰으로 2,000원 할인 ✨', en: 'Raspberry latte in Yulha. Fresh menus have no pork, alcohol or gelatin, so no worries for me. The coupon saved ₩2,000 ✨' } },
-  { id: 'p4', user: 'Wei', cc: 'TW', color: '#6E7F78', place: 'railpark', scene: 'railpark', stamp: 'taste', likes: 96, comments: 7, tags: ['railbike'],
+  { id: 'p4', user: 'Wei', cc: 'TW', color: '#6E7F78', place: 'traincafe', scene: 'traincafe', stamp: 'taste', likes: 96, comments: 7, tags: ['fresh'],
     time: { ko: '2시간 전', en: '2 h ago' },
-    orig: { lang: 'zh', text: '採完覆盆子就去洛東江騎鐵道自行車，夕陽太美了！出示通行證還有折扣 🚲' },
-    tr: { ko: '산딸기 따고 낙동강 레일바이크로! 노을이 너무 예뻤어요. 패스 보여 주니 할인도 돼요 🚲', en: 'Picked raspberries, then the Nakdong rail bike! The sunset was gorgeous, and the pass got a discount 🚲' } },
+    orig: { lang: 'zh', text: '摘完覆盆子，在火車咖啡廳喝一杯覆盆子氣泡飲！用菜單優惠券折了 ₩2,000 🍓' },
+    tr: { ko: '산딸기를 따고 열차카페에서 산딸기 에이드 한 잔! 메뉴 쿠폰으로 2,000원 할인받았어요 🍓', en: 'After picking, a raspberry ade at the train café! The menu coupon took ₩2,000 off 🍓' } },
   { id: 'p5', user: 'Emma', cc: 'US', color: '#D9A93F', place: 'airport', scene: 'box', stamp: 'set', likes: 352, comments: 44, tags: ['giftbox', 'clean'],
     time: { ko: '어제', en: 'yesterday' },
     orig: { lang: 'en', text: 'Five stamps, one raspberry gift box! Jam, chocolate and dried berries picked up at Gimhae Airport — and zero trash left behind.' },
     tr: { ko: '스탬프 다섯 개로 산딸기 선물 상자 완성! 잼·초콜릿·건조 산딸기를 김해공항에서 받았어요. 쓰레기는 하나도 남기지 않고요.' } },
 ];
-const TAGS = ['all', 'festival', 'fresh', 'railbike', 'clean', 'giftbox'];
+const TAGS = ['all', 'festival', 'make', 'fresh', 'clean', 'giftbox'];
 const CC_C = { IN: '#C25E00', SA: '#0B6B3A', TR: '#E30A17', JP: '#BC002D', VN: '#DA251D', TW: '#1B3A8C', US: '#3C3B6E', MY: '#0B2F7A' };
 
 const RULES = [
@@ -1690,7 +1692,7 @@ const STANDARD = [
 ];
 
 /* ───────── 장소 상세 정보 ─────────
-   실제 관광지(수로왕릉·국립김해박물관·레일파크·가야테마파크·관광안내소·공항)는 2026년 11월에 공식 자료로 확인한 내용이에요.
+   실제 장소(레일파크·관광안내소·공항)는 2026년 11월에 공식 자료로 확인한 내용이에요.
    운영 시간과 요금은 바뀔 수 있어요. ‘(예시)’ 장소와 ‘(서비스 예정)’ 표시는 라즈베리 패스 기획 내용이에요. */
 const INFO_ASOF = '2026.11';
 
@@ -1699,10 +1701,6 @@ const INFO_ASOF = '2026.11';
    ▶ 사진을 바꾸려면 src 에 이미지 주소(또는 이 HTML 옆에 둔 파일 경로, 예: 'img/farm.jpg')를 넣고
      by / lic / page 를 함께 고치세요. 사진이 없는 장소는 여기에 항목을 추가하면 돼요. */
 const PHOTOS = {
-  suro: { file: 'Suro_Tomb.JPG', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Suro_Tomb.JPG/960px-Suro_Tomb.JPG',
-    by: 'Kwj2772', lic: 'CC BY-SA 3.0', licUrl: 'https://creativecommons.org/licenses/by-sa/3.0/' },
-  museum: { file: 'Gimhae_national_museum.JPG', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Gimhae_national_museum.JPG/960px-Gimhae_national_museum.JPG',
-    by: 'hyolee2', lic: 'CC BY-SA 3.0', licUrl: 'https://creativecommons.org/licenses/by-sa/3.0/' },
   airport: { file: 'Gimhae_International_Airport_Departure_Hall.jpg', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Gimhae_International_Airport_Departure_Hall.jpg/960px-Gimhae_International_Airport_Departure_Hall.jpg',
     by: 'Minseong Kim', lic: 'CC BY-SA 4.0', licUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' },
 };
@@ -1764,13 +1762,13 @@ const INFO = (() => {
     },
     railpark: {
       art: 'railpark', sched: { mon: true, wk: '09:30–17:20', we: '09:30–18:50', pre: T('매표 ', 'Tickets ') }, stay: T('2시간', '2 hr'),
-      intro: T('낙동강 옛 철교와 폐선 구간을 살려 2016년 문을 연 레일파크예요. 강 위 철교를 달리는 레일바이크와 열차카페, 철교 전망대가 있어요. 라즈베리 패스를 보여 주면 할인받고, 농장 축제와 하루 코스로 이어져요.',
-        'Opened in 2016 on a retired railway line across the Nakdong River, with rail bikes over the old iron bridge, a train café and a bridge viewpoint. Show your Raspberry Pass for a discount; it pairs with the farm festival in one day.'),
+      intro: T('낙동강 옛 철교와 폐선 구간을 살려 2016년 문을 연 레일파크예요. 강 위 철교를 달리는 레일바이크를 타고, 열차카페에서 산딸기 에이드로 쉬어 가요. 라즈베리 패스를 보여 주면 할인받고, 상동 산딸기 농장과 하루 코스로 이어져요.',
+        'Opened in 2016 on a retired railway line across the Nakdong River: ride a rail bike over the old iron bridge, then rest with a raspberry ade at the train café. Show your Raspberry Pass for a discount; it pairs with the Sangdong raspberry farm in one day.'),
       hi: [
         ['bike', T('레일바이크', 'Rail bike'), T('약 40분 동안 철교 위를 지나 왕복 약 3km를 달려요.', 'About 40 minutes and roughly 3 km out and back, over the bridge.')],
-        ['sunset', T('‘왕의 노을’', '“King’s Sunset” ride'), T('봄 시즌 주말엔 저녁 8시까지 노을 속을 달렸어요 (2026년 기준).', 'In spring 2026, weekend rides ran until 8 pm, into the sunset.')],
-        ['cup', T('열차카페', 'Train café'), T('객차를 꾸민 카페에서 산딸기 먹거리로 쉬어 가요.', 'Rest with raspberry treats in a café built into a train car.')],
+        ['cup', T('열차카페 산딸기 에이드', 'Raspberry ade at the train café'), T('객차를 꾸민 카페에서 산딸기 에이드·케이크로 쉬어 가요 (메뉴 쿠폰 2,000원 할인).', 'Raspberry ade and cake in a café built into a train car, ₩2,000 off with a menu coupon.')],
         ['ticket', T('패스 할인', 'Pass discount'), T('매표소에서 라즈베리 패스를 보여 주세요 (서비스 예정).', 'Show your Raspberry Pass at the ticket office (planned).')],
+        BAG,
       ],
       hours: T('매표 평일 09:30–17:20\n매표 주말 09:30–18:50', 'Tickets, weekdays 09:30–17:20\nTickets, weekends 09:30–18:50'),
       closed: T('월요일', 'Mondays'),
@@ -1778,7 +1776,7 @@ const INFO = (() => {
       addr: T('김해시 생림면 마사로473번길 41', '41 Masa-ro 473beon-gil, Saengnim-myeon, Gimhae'),
       how: T('김해 시내에서 버스·택시로 생림면까지 (노선은 방문 전 확인)', 'Bus or taxi from central Gimhae to Saengnim-myeon (check routes before you go)'),
       tel: '055-333-8359',
-      tip: T('상동 농장에서 따고 오후에 레일바이크, 해 질 녘엔 열차카페 — 산딸기 하루 코스예요.', 'Pick in Sangdong, ride in the afternoon, then the train café at dusk: the raspberry day route.'),
+      tip: T('상동 농장에서 따고 오후엔 레일바이크, 내려와서 열차카페 산딸기 에이드 — 산딸기 하루 코스예요.', 'Pick in Sangdong, ride in the afternoon, then a raspberry ade at the train café: the raspberry day route.'),
       near: ['traincafe', 'farm_sd'],
     },
     traincafe: {
@@ -1791,24 +1789,6 @@ const INFO = (() => {
       how: T('레일바이크 승강장 옆이에요.', 'Next to the rail-bike platform.'),
       tip: T('레일바이크를 타고 내려와 산딸기 에이드 한 잔 — 코스의 쉼표예요.', 'Off the rail bike, a raspberry ade: the pause in the route.'),
       near: ['railpark'],
-    },
-    theme: {
-      art: 'palace', sched: { mon: true, h: '09:30–18:00' }, stay: T('2–3시간', '2–3 hr'),
-      intro: T('분성산 자락에서 가야 왕국의 생활과 문화를 보고, 입고, 만들어 보는 테마파크예요. 가야 왕궁을 재현한 전시관과 체험 시설이 모여 있어요. 라즈베리 패스로 입장 할인을 받아요.',
-        'A theme park on the slopes of Bunseongsan where you see, wear and make Gaya culture, with a recreated royal palace and hands-on facilities. Your Raspberry Pass gets an admission discount.'),
-      hi: [
-        ['crown', T('가야왕궁 전시관', 'Gaya Palace hall'), T('재현한 왕궁에서 가야 왕실 이야기를 만나요.', 'Royal Gaya stories inside a recreated palace.')],
-        ['flash', T('가야무사 어드벤처', 'Gaya Warrior Adventure'), T('몸으로 즐기는 모험 체험 코스예요.', 'An active adventure course.')],
-        ['ticket', T('패스 할인', 'Pass discount'), T('매표소에서 패스를 보여 주면 입장 할인 + 테이스트 스탬프 (서비스 예정).', 'Show the pass for an admission discount plus a Taste Stamp (planned).')],
-      ],
-      hours: T('화–일 09:30–18:00 (매표 17:00까지)', 'Tue–Sun 09:30–18:00 (tickets until 17:00)'),
-      closed: T('월요일 (공휴일이면 운영)', 'Mondays (open on public holidays)'),
-      fee: T('성인 7,000원 · 청소년 6,000원\n어린이·경로 5,000원\n36개월 미만 무료', 'Adults ₩7,000 · youth ₩6,000\nChildren & seniors ₩5,000\nUnder 36 months free'),
-      addr: T('김해시 가야테마길 161 (어방동)', '161 Gaya-tema-gil, Gimhae (Eobang-dong)'),
-      how: T('부산김해경전철 인제대역 1번 출구에서 무료 셔틀 (월·화 미운행)', 'Free shuttle from Exit 1, Inje Univ. Station (Busan–Gimhae LRT); none on Mon–Tue'),
-      tel: '055-340-7900',
-      tip: T('원도심 산딸기 가게들과 가까워요. 오전엔 테마파크, 오후엔 산딸기 디저트로 이어 가 보세요.', 'Close to the old-town raspberry shops: theme park in the morning, raspberry desserts after.'),
-      near: ['souvenir', 'bakery'],
     },
     cafe_yh: {
       art: 'berrycafe', sample: true, sched: { text: T('매장 영업시간', 'Shop hours') }, stay: T('40분', '40 min'),
@@ -1830,7 +1810,7 @@ const INFO = (() => {
       addr: T('김해 원도심 (예시 위치)', 'Gimhae old town (sample location)'),
       how: T('부산김해경전철 김해시청역에서 걸어서 (예시)', 'Walk from City Hall Station (sample)'),
       tip: T('타르트는 오후면 동나요. 축제 셔틀을 타기 전에 들르세요.', 'Tarts sell out by afternoon: stop by before the festival shuttle.'),
-      near: ['resto', 'suro'],
+      near: ['resto', 'souvenir'],
     },
     dessert: {
       art: 'bingsu', sample: true, sched: { text: T('매장 영업시간', 'Shop hours') }, stay: T('30분', '30 min'),
@@ -1841,7 +1821,7 @@ const INFO = (() => {
       addr: T('김해시 봉황동 봉리단길 (예시 위치)', 'Bongridan-gil, Bonghwang-dong, Gimhae (sample location)'),
       how: T('부산김해경전철 봉황역에서 걸어서 (예시)', 'Walk from Bonghwang Station (sample)'),
       tip: T('빙수는 둘이 나눠 먹기 좋은 크기예요. 쿠폰 1장으로 2,000원 할인.', 'Bingsu is sized for two; one coupon takes ₩2,000 off.'),
-      near: ['suro', 'resto'],
+      near: ['resto', 'bakery'],
     },
     resto: {
       art: 'salad', sample: true, sched: { text: T('매장 영업시간', 'Shop hours') }, stay: T('1시간', '1 hr'),
@@ -1852,7 +1832,7 @@ const INFO = (() => {
       addr: T('김해시 동상동 (예시 위치)', 'Dongsang-dong, Gimhae (sample location)'),
       how: T('부산김해경전철 수로왕릉역에서 걸어서 (예시)', 'Walk from Suro Royal Tomb Station (sample)'),
       tip: T('할랄 지도 대신, 누구나 먹는 메뉴 — 성분 아이콘을 확인하세요.', 'Menus for everyone, not a halal-only map: check the ingredient icons.'),
-      near: ['bakery', 'suro'],
+      near: ['bakery', 'dessert'],
     },
     souvenir: {
       art: 'giftshop', sample: true, sched: { text: T('매장 영업시간', 'Shop hours') }, stay: T('20분', '20 min'),
@@ -1866,47 +1846,12 @@ const INFO = (() => {
       addr: T('김해 원도심 (예시 위치)', 'Gimhae old town (sample location)'),
       how: T('부산김해경전철 수로왕릉역에서 걸어서 (예시)', 'Walk from Suro Royal Tomb Station (sample)'),
       tip: T('무거운 잼은 공항에서 선물 상자로 받으면 짐이 가벼워요.', 'Heavy jars? Collect them in the gift box at the airport and travel light.'),
-      near: ['theme', 'suro'],
-    },
-    suro: {
-      art: 'gate', sched: { season: 'royal' }, stay: T('40분–1시간', '40–60 min'),
-      intro: T('삼국유사에 서기 42년 금관가야를 세웠다고 전하는 김수로왕의 무덤이에요. 봉분 앞으로 제사를 모시는 숭선전과 전각들이 이어지고, 넓은 잔디 정원이 있어 산딸기 디저트를 먹고 천천히 걷기 좋아요.',
-        'The tomb of King Suro, who, according to the Samguk Yusa, founded Geumgwan Gaya in AD 42. Shrine halls such as Sungseonjeon line up before the mound, and the wide lawns are good for a slow stroll after a raspberry dessert.'),
-      hi: [
-        ['fish', T('쌍어문', 'Twin-fish carving'), T('정문인 납릉정문에 물고기 두 마리가 마주 보는 문양이 있어요. 허왕후의 고향 아유타국과 잇는 해석도 있어요.', 'Look for two facing fish on the main gate, Nangneung Jeongmun. Some link the motif to Queen Heo’s homeland, Ayuta.')],
-        ['crown', T('숭선전', 'Sungseonjeon Shrine'), T('수로왕과 허왕후의 위패를 모신 사당이에요.', 'The shrine holding the spirit tablets of King Suro and Queen Heo.')],
-        ['leaf', T('6월 말 능소화', 'Late-June blossoms'), T('6월 말이면 돌담을 따라 주황빛 능소화가 피어요 — 노지 산딸기 철과 같아요.', 'In late June, orange trumpet-creeper flowers spill over the walls, right in open-field raspberry season.')],
-      ],
-      hours: ROYAL_H, closed: NONE, fee: FREE,
-      addr: T('김해시 가락로93번길 26 (서상동)', '26 Garak-ro 93beon-gil, Gimhae'),
-      how: T('부산김해경전철 수로왕릉역에서 걸어서 갈 수 있어요.', 'Walkable from Suro Royal Tomb Station (Busan–Gimhae LRT).'),
-      extra: [['pd_guide', T('무료 문화관광해설 10:00–17:00 (미리 예약하면 좋아요)', 'Free heritage guide 10:00–17:00 (booking recommended)')]],
-      tel: '055-332-1094',
-      tip: T('주변 원도심에 산딸기 베이커리·식당·기념품 가게가 모여 있어요.', 'The old town around it gathers the raspberry bakery, kitchen and gift shop.'),
-      near: ['bakery', 'resto', 'souvenir'],
-    },
-    museum: {
-      art: 'museum', sched: { mon: true, jan1: true, h: '09:00–18:00' }, stay: T('1–1.5시간', '1–1.5 hr'),
-      intro: T('가야의 역사와 문화를 한자리에서 보여 주는 국립박물관이에요. 1998년 문을 열었고, 검은 벽돌 외관은 가야를 ‘철의 왕국’으로 만든 철광석과 숯을 상징해요. 안내데스크는 라즈베리 쓰레기 봉투 반납처가 돼요 (서비스 예정).',
-        'A national museum devoted to Gaya history and culture, opened in 1998. Its black-brick exterior stands for the iron ore and charcoal behind Gaya’s “kingdom of iron”. The info desk would take Raspberry trash bags (planned).'),
-      hi: [
-        ['crown', T('가야의 토기와 철기', 'Gaya pottery & iron'), T('가야 사람들이 만든 토기와 갑옷, 철기 유물을 만날 수 있어요.', 'Pottery, armor and ironwork made by the people of Gaya.')],
-        ['spark', T('검은 벽돌 건물', 'The black-brick building'), T('철광석과 숯을 닮은 벽돌 — 건물 자체가 ‘철의 왕국’ 이야기예요.', 'Bricks the color of iron ore and charcoal: the building itself tells the iron story.')],
-        BAG,
-      ],
-      hours: T('09:00–18:00 (입장 17:30까지)', '09:00–18:00 (last entry 17:30)'),
-      closed: T('월요일(공휴일이면 다음 평일), 1월 1일, 설·추석 당일', 'Mondays (next weekday if a holiday), Jan 1, Seollal & Chuseok'),
-      fee: T('무료 (일부 특별전 유료)', 'Free (some special exhibitions charge)'),
-      addr: T('김해시 가야의길 190', '190 Gaya-ui-gil, Gimhae'),
-      how: T('부산김해경전철 박물관역에서 걸어서 약 8분', 'About 8 min on foot from Museum Station (Busan–Gimhae LRT)'),
-      tel: '055-320-6825',
-      tip: T('비 오는 날 축제 대신 들르기 좋은 실내 코스예요.', 'A good indoor plan if rain cancels the open-field picking.'),
-      near: ['suro', 'theme'],
+      near: ['bakery', 'resto'],
     },
     info: {
       art: 'info', sched: { wk: '09:00–18:00', we: '10:00–17:00', jan1: true }, stay: T('10–20분', '10–20 min'),
-      intro: T('가야의 거리에 있는 김해 여행의 출발점이에요. 지도와 여행 정보를 받을 수 있고, 라즈베리 패스에서는 다국어 도움, 축제 셔틀 안내, 봉투 반납과 웰컴 키트 분실 지원을 맡아요 (서비스 예정).',
-        'Your starting point on Gaya Street, with maps and travel info. In the Raspberry Pass plan it handles multilingual help, festival shuttle info, bag returns and lost-kit support (planned).'),
+      intro: T('김해 원도심에 있는 여행 안내소예요. 지도와 여행 정보를 받을 수 있고, 라즈베리 패스에서는 다국어 도움, 축제 셔틀 안내, 봉투 반납과 웰컴 키트 분실 지원을 맡아요 (서비스 예정).',
+        'The tourist info center in Gimhae’s old town, with maps and travel info. In the Raspberry Pass plan it handles multilingual help, festival shuttle info, bag returns and lost-kit support (planned).'),
       hi: [
         ['bus', T('축제 셔틀 안내', 'Festival shuttle info'), T('축제 주말 셔틀 시간표와 타는 곳을 알려 드려요.', 'Festival-weekend shuttle times and stops.')],
         BAG,
@@ -1917,19 +1862,19 @@ const INFO = (() => {
       addr: T('김해시 구지로 95 (대성동)', '95 Guji-ro, Gimhae (Daeseong-dong)'),
       how: T('가야의 거리(대성동)에 있어요.', 'On Gaya Street in Daeseong-dong.'),
       tel: '055-338-1330',
-      tip: T('여행 첫날 들러서 축제 주말 셔틀 시간을 확인해 보세요.', 'Drop by on day one to check the festival shuttle times.'),
-      near: ['museum', 'suro'],
+      tip: T('들러서 축제 주말 셔틀 시간을 확인해 보세요.', 'Drop by to check the festival shuttle times.'),
+      near: ['bakery', 'souvenir'],
     },
     airport: {
       art: 'airport', sched: { text: T('도착일 · 출국일', 'Arrival & departure') }, stay: T('—', '—'),
       intro: T('라즈베리 패스 여행이 시작되고 끝나는 곳이에요. 도착하면 패스와 웰컴 키트(패스 카드·QR 쓰레기 봉투 3장·스탬프 지도)를 받고, 출국하는 날 스탬프 5개로 완성한 산딸기 선물 상자를 받아 가요 (서비스 예정).',
         'Where your Raspberry Pass trip starts and ends: get the pass and welcome kit (pass card, three QR trash bags, stamp map) on arrival, and your raspberry gift box, earned with five stamps, on departure (planned).'),
       hi: [
-        ['ticket', T('패스 구매 · 웰컴 키트', 'Pass & welcome kit'), T('공항이나 앱에서 15,000원 2일권을 사고 키트를 받아요 (서비스 예정).', 'Buy the ₩15,000 two-day pass here or in the app and collect the kit (planned).')],
+        ['ticket', T('패스 구매 · 웰컴 키트', 'Pass & welcome kit'), T('공항이나 앱에서 15,000원 1일권을 사고 키트를 받아요 (서비스 예정).', 'Buy the ₩15,000 one-day pass here or in the app and collect the kit (planned).')],
         ['gift', T('선물 상자 수령', 'Gift box pickup'), T('잼·초콜릿·건조 산딸기 — 출국 수속 전에 수령 데스크로 (서비스 예정).', 'Jam, chocolate and dried berries: visit the desk before check-in (planned).')],
         ['train', T('경전철 연결', 'LRT link'), T('공항역에서 부산김해경전철을 타면 김해 시내로 바로 가요.', 'The Busan–Gimhae LRT from Airport Station runs straight into Gimhae.')],
       ],
-      hours: T('수령 데스크 운영 시간은 서비스 출시 때 안내해요', 'Desk hours will be announced at launch'), closed: T('—', '—'), fee: T('패스 15,000원 (2일권)', 'Pass ₩15,000 (2 days)'),
+      hours: T('수령 데스크 운영 시간은 서비스 출시 때 안내해요', 'Desk hours will be announced at launch'), closed: T('—', '—'), fee: T('패스 15,000원 (1일권)', 'Pass ₩15,000 (1 day)'),
       addr: T('부산 강서구 · 김해국제공항 국제선 청사 (예정)', 'Gangseo-gu, Busan · International Terminal (planned)'),
       how: T('부산김해경전철 공항역과 이어져요.', 'Connected to Airport Station (Busan–Gimhae LRT).'),
       tip: T('출국 전 남은 라즈베리 쓰레기 봉투는 공항 반납처에 — 마지막 쓰레기까지 깔끔하게!', 'Return any leftover Raspberry trash bags at the airport drop-off before you fly.'),
@@ -2606,8 +2551,9 @@ const LI = { ko: 0, en: 1 };
 
 function defaults() {
   const now = Date.now();
-  return { lang: 'ko', stamps: [{ type: 'taste', place: 'railpark', t: now - 3 * 36e5 }], bags: BAGS, returns: [], coupons: [], bookings: [], likes: {}, saves: {}, myPosts: [],
-    pickup: 'airport', notif: true, read: false, passEnd: now + (31 * 60 + 42) * 6e4 + 9e3, setT: 0 };
+  return { lang: 'ko', stamps: [{ type: 'taste', place: 'railpark', t: now - 5 * 36e5 }, { type: 'taste', place: 'traincafe', t: now - 4.5 * 36e5 }, { type: 'clean', place: 'traincafe', t: now - 4.4 * 36e5 }],
+    bags: BAGS - 1, returns: [{ place: 'traincafe', t: now - 4.4 * 36e5 }], coupons: [{ place: 'traincafe', item: MENUS.traincafe[0][0], t: now - 4.5 * 36e5 }], bookings: [], likes: {}, saves: {}, myPosts: [],
+    pickup: 'airport', notif: true, read: false, passEnd: now + (9 * 60 + 42) * 6e4 + 9e3, setT: 0 };
 }
 /* 데모 상태는 메모리에만 둬요 — 새로고침하면 처음 상태로 돌아가요 */
 function load() { return defaults(); }
@@ -2736,7 +2682,7 @@ function renderNotifs() {
     { ic: 'bus', text: t('n_shuttle', { from: L(sh.from), to: L(PLACE[sh.to].short), t: nd.t }), time: L({ ko: '방금', en: 'now' }), go: ['fest'] },
     { ic: 'stamp', text: n2, time: L({ ko: '10분 전', en: '10 min ago' }), go: ['stamp'] },
     ...(cpLeft() > 0 ? [{ ic: 'ticket', text: t('n_coupon', { n: cpLeft() }), time: L({ ko: '30분 전', en: '30 min ago' }), go: ['map', 'cafe_yh'] }] : []),
-    { ic: 'sunset', text: t('n_sunset'), time: L({ ko: '1시간 전', en: '1 h ago' }), go: ['map', 'railpark'] },
+    { ic: 'berry', text: t('n_peak'), time: L({ ko: '1시간 전', en: '1 h ago' }), go: ['fest'] },
   ];
   $('#notifList').innerHTML = list.map((n, i) => `<button class="np-item${S.read ? '' : ' unread'}" data-i="${i}" data-go="${n.go.join(',')}"><span class="np-ic">${ART.ic(n.ic, 18, 2)}</span><span><p>${esc(n.text)}</p><small>${esc(n.time)}</small></span></button>`).join('');
   $('#bellDot').classList.toggle('off', S.read);
@@ -2746,6 +2692,7 @@ const toMin = s => { const [h, m] = s.split(':').map(Number); return h * 60 + m;
 const fmtMin = m => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
 function nextDep(sh, d = new Date()) {
   const now = d.getHours() * 60 + d.getMinutes(), a = toMin(sh.first), b = toMin(sh.last);
+  if (now < a - 60) return { t: sh.first, first: true };   // 첫차 1시간 이상 전이면 ‘첫차’로만 표시
   const m = now <= a ? a : a + Math.ceil((now - a) / sh.every) * sh.every;
   if (m > b) return { t: sh.first, ended: true };
   return { t: fmtMin(m), in: m - now };
@@ -3137,7 +3084,7 @@ function setFilter(f) {
   M.filter = f; applyFilter(); closePlace();
   if (f === 'move') flyTo(720, 640, .56, 800, .48);
   else if (f === 'farm') flyTo(800, 580, .5, 800, .44);
-  else if (f === 'attr') flyTo(740, 380, .7, 800, .44);
+  else if (f === 'attr') flyTo(676, 236, .95, 800, .44);
   else if (f === 'menu') flyTo(580, 820, .6, 800, .44);
 }
 function placeTime(p) {
@@ -3584,7 +3531,7 @@ function renderBookings() {
 function renderShuttle() {
   $('#festShuttle').innerHTML = `<div class="card-head"><div><h3>${t('fe_shuttle')}</h3><p class="sub">${t('fe_shuttle_sub')}</p></div><button class="link" id="shMap">${t('fe_onmap')}</button></div>` + SHUTTLES.map(sh => {
     const nd = nextDep(sh), f = PLACE[sh.to];
-    return `<div class="sh-row"><span class="sh-ic">${ART.ic('bus', 20, 2)}</span><div class="sh-t"><b>${esc(L(sh.from))} → ${esc(L(f.short))}</b><small>${sh.first}–${sh.last} · ${t('fe_every', { n: sh.every })} · ${t('fe_ride', { n: sh.min })}</small></div><div class="sh-n${nd.ended ? ' off' : ''}"><small>${t(nd.ended ? 'fe_first_dep' : 'fe_next_dep')}</small><b class="mono">${nd.t}</b><em>${nd.ended ? t('fe_tomorrow') : t('fe_in', { n: nd.in })}</em></div></div>`;
+    return `<div class="sh-row"><span class="sh-ic">${ART.ic('bus', 20, 2)}</span><div class="sh-t"><b>${esc(L(sh.from))} → ${esc(L(f.short))}</b><small>${sh.first}–${sh.last} · ${t('fe_every', { n: sh.every })} · ${t('fe_ride', { n: sh.min })}</small></div><div class="sh-n${nd.ended ? ' off' : ''}"><small>${t(nd.ended || nd.first ? 'fe_first_dep' : 'fe_next_dep')}</small><b class="mono">${nd.t}</b>${nd.first ? '' : `<em>${nd.ended ? t('fe_tomorrow') : t('fe_in', { n: nd.in })}</em>`}</div></div>`;
   }).join('');
 }
 /* 산딸기 시즌 — 가온 3–4월 · 무가온 5월 · 노지 5월 말–6월, 2월 말 첫 출하 */
@@ -3602,10 +3549,17 @@ function renderFest() {
   $('#festStd').innerHTML = `<div class="card-head"><div><h3>${t('fe_std')}</h3><p class="sub">${t('fe_std_sub')}</p></div></div>${stdHTML()}`;
   renderTags(); renderFeed();
 }
-let festShown = false;
-function onFestShow() {
-  renderShuttle();
-  if (!festShown) { festShown = true; odoRender(odoN - 37, true); setTimeout(() => odoRender(odoN), 300); }
+let festTab = 'fest', commShown = false;
+function onFestShow() { renderShuttle(); }
+/* 축제 탭 맨 위 토글: 축제 ↔ 커뮤니티 */
+function setFestTab(k, scroll = true) {
+  festTab = k;
+  $$('#festSeg button').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+  $('#festSeg').classList.toggle('r', k === 'comm');
+  $('#paneFest').hidden = k !== 'fest'; $('#paneComm').hidden = k !== 'comm';
+  $('#app').dataset.ft = k;
+  if (scroll) $('#scr-fest').scrollTo({ top: 0 });
+  if (k === 'comm' && !commShown) { commShown = true; odoRender(odoN - 37, true); setTimeout(() => { odoRender(odoN); drawSpark(); }, 300); }
 }
 /* 축제 예약 시트 — 직접 따기(+만들기) */
 const BK = { farm: 'farm_sd', day: 'sat', slot: null, ppl: 2, make: false };
@@ -3651,7 +3605,7 @@ function postWrite() {
   const txt = $('#wText').value.trim() || t('write_default');
   const scenePlace = { farm: 'farm_sd', jam: 'farm_sd', berrycafe: 'cafe_yh', railpark: 'railpark', box: 'airport' }[W_SCENES[wScene]];
   S.myPosts.unshift({ id: `m${Date.now()}`, user: USER.name, cc: USER.cc, color: USER.color, place: scenePlace, scene: W_SCENES[wScene], stamp: null, likes: 0, comments: 0, tags: [...wTags], time: null, orig: { lang: S.lang, text: txt }, tr: {} });
-  save(); closeSheets(); tagF = 'all'; renderTags(); renderFeed();
+  save(); closeSheets(); tagF = 'all'; renderTags(); renderFeed(); if (cur !== 'fest') go('fest'); setFestTab('comm', false);
   const first = $('#feed .post'); if (first) first.classList.add('new');
   $('#revHead').scrollIntoView({ behavior: 'smooth', block: 'start' });
   const fr = $('#fab').getBoundingClientRect(), dr = devRect();
@@ -3672,7 +3626,7 @@ function renderMy() {
   const done = isComplete(), left = NEED - tot;
   $('#pickup').innerHTML = `<div class="card-head"><div><h3>${t('pickup')}</h3><p class="sub">${t('pk_box')}</p></div><small>PICKUP</small></div><div class="pk-box${done ? ' on' : ''}">${ART.giftBox()}</div><div class="seg${S.pickup === 'delivery' ? ' r' : ''}" id="pkSeg"><i class="seg-thumb"></i><button data-v="airport" class="${S.pickup === 'airport' ? 'on' : ''}">${ART.ic('plane', 16)}${t('pk_airport')}</button><button data-v="delivery" class="${S.pickup === 'delivery' ? 'on' : ''}">${ART.ic('gift', 16)}${t('pk_delivery')}</button></div><div class="pk-body"><div class="pk-qr${done ? '' : ' locked'}">${ART.qr(77, 90)}${done ? '' : `<span class="lock">${ART.ic('lock', 28, 2.2)}</span>`}</div><div><b class="pk-st">${done ? t('pk_ready') : t('pk_locked', { n: left })}</b><p class="pk-d">${S.pickup === 'airport' ? t('pk_airport_d') : t('pk_delivery_d')}</p></div></div>`;
   const c = counts();
-  const B = [['b_farm', 'basket', TYPE_C.farm, c.farm >= MAX.farm, 'b_farm_d'], ['b_taste', 'cup', TYPE_C.taste, c.taste >= MAX.taste, 'b_taste_d'], ['b_rail', 'bike', '#2F8FA8', S.stamps.some(x => x.place === 'railpark'), 'b_rail_d'], ['b_clean', 'leaf', TYPE_C.clean, c.clean >= MAX.clean, 'b_clean_d'], ['b_set', 'gift', TYPE_C.set, done, 'b_set_d']];
+  const B = [['b_farm', 'basket', TYPE_C.farm, c.farm >= MAX.farm, 'b_farm_d'], ['b_taste', 'cup', TYPE_C.taste, c.taste >= MAX.taste, 'b_taste_d'], ['b_make', 'jar', '#E0703F', S.bookings.some(x => x.make && x.checked), 'b_make_d'], ['b_clean', 'leaf', TYPE_C.clean, c.clean >= MAX.clean, 'b_clean_d'], ['b_set', 'gift', TYPE_C.set, done, 'b_set_d']];
   $('#badges').innerHTML = B.map(([k, i, col, ok, d]) => `<div class="badge${ok ? '' : ' locked'}" style="--c:${col}"><div class="medal">${ART.ic(ok ? i : 'lock', 24, 2)}</div><b>${t(k)}</b><small>${t(d)}</small></div>`).join('');
   $('#menu').innerHTML = `<button class="mi" data-a="rules">${ART.ic('book', 20)}<span>${t('menu_rules')}</span><span class="v">${ART.ic('chev', 16)}</span></button><button class="mi" data-a="std">${ART.ic('leaf', 20)}<span>${t('menu_std')}</span><span class="v">${ART.ic('chev', 16)}</span></button><button class="mi" data-a="notif">${ART.ic('bell', 20)}<span>${t('menu_notif')}</span><span class="switch${S.notif ? ' on' : ''}"></span></button><button class="mi" data-a="help">${ART.ic('help', 20)}<span>${t('menu_help')}</span><span class="v">${ART.ic('chev', 16)}</span></button>`;
   if (cur === 'my') animateRings();
@@ -3786,6 +3740,7 @@ function bind() {
   // 축제
   $('#progs').addEventListener('click', e => { const b = e.target.closest('.pg-btn'); if (!b) return; if (b.dataset.prog) openBooking(b.dataset.prog); else if (b.dataset.place) openPD(b.dataset.place, b.closest('.prog')); });
   $('#festMy').addEventListener('click', e => { const b = e.target.closest('.bk-ci'); if (b) checkIn(b.dataset.bid); });
+  $('#festSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.k !== festTab) { setFestTab(b.dataset.k); buzz(6); } });
   $('#festShuttle').addEventListener('click', e => { if (!e.target.closest('#shMap')) return; go('map'); setTimeout(() => setFilter('move'), M.intro ? 380 : 1900); });
   $('#bookSheet').addEventListener('click', e => {
     if (e.target.closest('#bkGo')) { confirmBooking(); return; }
