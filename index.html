@@ -1060,6 +1060,20 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
 .hm-bundle .pg-btn{width:100%;height:44px}
 .hm-live{margin-top:12px}
 
+/* 패스 화면 내 예약 카드 (축제 탭과 같은 카드) — 방금 만든 예약은 내려앉고 체크인 버튼이 두 번 반짝 */
+#stampMy[hidden]{display:none}
+.bk-tk.just{animation:bkIn .7s var(--spring) both}
+.bk-tk.just .bk-ci{animation:bkPing 1.5s ease-out .6s 2}
+@keyframes bkIn{0%{opacity:0;transform:translateY(-14px) scale(.96)}100%{opacity:1;transform:none}}
+@keyframes bkPing{0%{box-shadow:0 0 0 0 rgba(200,52,79,.55)}100%{box-shadow:0 0 0 12px rgba(200,52,79,0)}}
+/* 스탬프 여권: 체크인 전 예약이 있으면 빈 팜 칸 = 바로 체크인 */
+.slot.ci{cursor:pointer;outline:none}
+.slot.ci .ring{border-color:color-mix(in srgb,var(--c) 50%,#fff);background:radial-gradient(circle,color-mix(in srgb,var(--c) 10%,#fff),rgba(255,255,255,0) 72%);animation:ppPulse 2.4s ease-in-out infinite;transition:opacity .3s,transform .2s}
+.slot.ci .ring b{color:var(--c);font-weight:800}
+.slot.ci .ring .ic{opacity:1}
+.slot.ci:active .ring{transform:scale(.95)}
+.slot.ci:focus-visible{box-shadow:0 0 0 3px rgba(47,143,168,.35)}
+
 </style>
 </head>
 <body>
@@ -1114,6 +1128,8 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
             <p data-i18n="hello_sub"></p>
           </div>
           <div class="fest-hero hm-hero rise" id="hmHero"></div>
+          <!-- 내 예약: 예약이 생기면 축제 탭과 같은 예약 카드가 여기 나타나요 — 바로 체크인 -->
+          <div class="card rise" id="stampMy" hidden></div>
           <div class="card set-card rise">
             <div class="card-head"><div><h3 data-i18n="set_title"></h3><p class="sub" data-i18n="set_sub"></p></div><span class="count-pill" id="setPill"></span></div>
             <div class="vessels" id="vessels"></div>
@@ -1330,6 +1346,7 @@ const I = {
   slot_taste: ['어트랙션·메뉴', 'Attraction or menu'],
   slot_clean: ['봉투 반납', 'Bag return'],
   slot_set: ['산딸기 선물 상자', 'Raspberry Gift Box'],
+  slot_ci: ['농장 체크인', 'Farm check-in'],
   missions: ['미션', 'Missions'],
   m_farm: ['축제 미션', 'Festival Mission'],
   m_farm_d: ['농장 축제에서 직접 따기 1회', 'Pick at the farm festival once'],
@@ -2885,15 +2902,19 @@ function updateVessels(animate = true) {
 const SLOT_DEF = [['farm', 0], ['taste', 0], ['taste', 1], ['clean', 0], ['clean', 1], ['set', 0]];
 function renderSlots(popKey) {
   const by = { farm: [], taste: [], clean: [] }; S.stamps.forEach(s => { const m = missionOf(s.type); if (by[m]) by[m].push(s); });
+  const bk = nextBooking();   // 체크인 전 예약이 있으면 빈 팜 칸은 '농장 체크인' 칸이 돼요
   $('#slots').innerHTML = SLOT_DEF.map(([type, i], idx) => {
     const st = type === 'set' ? (isComplete() && S.setT ? { type: 'set', t: S.setT } : null) : by[type][i];
-    const hint = { farm: 'slot_farm', taste: 'slot_taste', clean: 'slot_clean', set: 'slot_set' }[type];
-    const icon = { farm: 'basket', taste: 'cup', clean: 'bag', set: 'gift' }[type];
+    const ci = !st && type === 'farm' && !!bk;
+    const hint = ci ? 'slot_ci' : { farm: 'slot_farm', taste: 'slot_taste', clean: 'slot_clean', set: 'slot_set' }[type];
+    const icon = ci ? 'qr' : { farm: 'basket', taste: 'cup', clean: 'bag', set: 'gift' }[type];
     const r = ((idx * 47) % 19) - 11;
     const pl = st && PLACE[st.place], cap = st ? (type === 'set' ? t('slot_set') : L(pl ? pl.short || pl.name : '')) : '';
     const key = `${type}${i}`;
-    const art = st ? (st.type || type) : type, aria = st ? ` role="button" tabindex="0" aria-label="${esc(t('vs_aria', { place: cap }))}"` : '';
-    return `<div class="slot${type === 'set' ? ' set' : ''}${st ? ' filled' : ''}${popKey === key ? ' inked' : ''}" data-k="${key}"${aria} style="--c:${TYPE_C[art]};--r:${r}deg"><div class="ring">${ART.ic(icon, 18)}<b>${t(hint)}</b></div>${st ? `<div class="st">${ART.stamp(art, dateStr(st.t))}</div><div class="cap">${esc(cap)}</div>` : ''}</div>`;
+    const art = st ? (st.type || type) : type;
+    const aria = st ? ` role="button" tabindex="0" aria-label="${esc(t('vs_aria', { place: cap }))}"`
+      : ci ? ` role="button" tabindex="0" aria-label="${esc(`${t('p_checkin')} · ${L(PLACE[bk.farm].short)}`)}"` : '';
+    return `<div class="slot${type === 'set' ? ' set' : ''}${st ? ' filled' : ''}${ci ? ' ci' : ''}${popKey === key ? ' inked' : ''}" data-k="${key}"${aria} style="--c:${TYPE_C[art]};--r:${r}deg"><div class="ring">${ART.ic(icon, 18)}<b>${t(hint)}</b></div>${st ? `<div class="st">${ART.stamp(art, dateStr(st.t))}</div><div class="cap">${esc(cap)}</div>` : ''}</div>`;
   }).join('');
   if (popKey) unpop($(`.slot[data-k="${popKey}"]`), 'inked', 1100);
   $('#slotHint').textContent = S.stamps.length ? t('vs_hint') : '';
@@ -3087,7 +3108,7 @@ async function detect(id) {
   await sleep(1000); closeScanner(); await sleep(220);
   if (p.cat === 'farm') {   // 농장 부스 QR = 축제 체크인
     let n = 0; S.bookings.forEach(b => { if (b.farm === id && !b.checked) { b.checked = true; n++; } });
-    if (n) renderBookings();
+    if (n) { renderBookings(); renderSlots(); }   // 여권의 '농장 체크인' 칸도 원래대로 (도장은 아래 giveStamp에서)
     if (stampOf(id) || counts().farm >= MAX.farm) { toast(t('fe_checked'), 'check'); if (M.sel) openPlace(M.sel, false); if (PD.id) refreshPD(); return; }
   }
   await giveStamp(p.stamp, id);
@@ -3675,14 +3696,22 @@ function renderProgs() {
     return `<div class="prog"><span class="pg-ic">${ART.ic(pg.ic, 22, 2)}</span><div class="pg-t"><b>${esc(L(pg.name))}</b><small>${esc(L(pg.desc))}${pg.dur ? ` · ${esc(L(pg.dur))}` : ''}</small><div class="pg-p">${price}</div></div>${btn}</div>`;
   }).join('');
 }
-/* 내 예약 */
-function renderBookings() {
+/* 내 예약 — 축제 탭과 패스 화면이 같은 예약 카드를 써요 (justId = 방금 만든 예약) */
+function renderBookings(justId) {
   renderHomeLive();
   const list = S.bookings.map(b => {
     const f = PLACE[b.farm], d = FEST_DAYS.find(x => x.k === b.day).d;
-    return `<div class="bk-tk${b.checked ? ' done' : ''}"><div class="bk-l"><small>${esc(L(PROGRAMS[0].name))}${b.make ? ` + ${esc(L(PROGRAMS[1].name))}` : ''}</small><b>${esc(L(f.short))}</b><span>${fdate(d)} · ${b.slot} · ${t('fe_ppl', { n: b.ppl })}</span><em>${won(b.price)} · ${t('bk_pay')}</em></div><div class="bk-r"><div class="bk-qr">${ART.qr(b.seed, 58)}</div>${b.checked ? `<span class="bk-ok">${ART.ic('check', 14, 3)}${t('fe_checked')}</span>` : `<button class="bk-ci rip" data-bid="${b.id}">${ART.ic('qr', 15, 2.2)}${t('p_checkin')}</button>`}</div></div>`;
+    return `<div class="bk-tk${b.checked ? ' done' : ''}${b.id === justId ? ' just' : ''}"><div class="bk-l"><small>${esc(L(PROGRAMS[0].name))}${b.make ? ` + ${esc(L(PROGRAMS[1].name))}` : ''}</small><b>${esc(L(f.short))}</b><span>${fdate(d)} · ${b.slot} · ${t('fe_ppl', { n: b.ppl })}</span><em>${won(b.price)} · ${t('bk_pay')}</em></div><div class="bk-r"><div class="bk-qr">${ART.qr(b.seed, 58)}</div>${b.checked ? `<span class="bk-ok">${ART.ic('check', 14, 3)}${t('fe_checked')}</span>` : `<button class="bk-ci rip" data-bid="${b.id}">${ART.ic('qr', 15, 2.2)}${t('p_checkin')}</button>`}</div></div>`;
   }).join('');
-  $('#festMy').innerHTML = `<div class="card-head"><h3>${t('fe_my')}</h3><small>MY BOOKINGS</small></div>${list || `<p class="bk-none">${ART.ic('basket', 18, 2)}<span>${t('fe_none')}</span></p>`}`;
+  const head = `<div class="card-head"><h3>${t('fe_my')}</h3><small>MY BOOKINGS</small></div>`;
+  $('#festMy').innerHTML = head + (list || `<p class="bk-none">${ART.ic('basket', 18, 2)}<span>${t('fe_none')}</span></p>`);
+  // 패스 화면: 예약이 있을 때만 축제 머리 카드 바로 아래에 같은 카드 — 거기서 바로 체크인
+  const sm = $('#stampMy'); sm.hidden = !list; sm.innerHTML = list ? head + list : '';
+}
+/* 체크인 전 예약 중 가장 이른 것 (축제일 → 시간 순) — 스탬프 여권의 팜 칸이 이 예약으로 바로 체크인 */
+function nextBooking() {
+  const di = k => FEST_DAYS.findIndex(x => x.k === k);
+  return S.bookings.filter(b => !b.checked).sort((a, b) => di(a.day) - di(b.day) || toMin(a.slot) - toMin(b.slot))[0] || null;
 }
 /* 축제 셔틀 */
 function renderShuttle() {
@@ -3742,11 +3771,13 @@ function renderBookSheet() {
 }
 function confirmBooking() {
   if (S.bookings.some(b => b.farm === BK.farm && b.day === BK.day && b.slot === BK.slot)) { toast(t('bk_dup'), 'cal'); return; }
-  S.bookings.unshift({ id: `b${Date.now()}`, farm: BK.farm, day: BK.day, slot: BK.slot, ppl: BK.ppl, make: BK.make, price: bkSum().total, seed: 50 + S.bookings.length * 7, checked: false }); save();
-  closeSheets(); renderBookings(); renderNotifs();
+  const id = `b${Date.now()}`;
+  S.bookings.unshift({ id, farm: BK.farm, day: BK.day, slot: BK.slot, ppl: BK.ppl, make: BK.make, price: bkSum().total, seed: 50 + S.bookings.length * 7, checked: false }); save();
+  closeSheets(); renderBookings(id); renderSlots(); renderNotifs();
   if (M.sel) openPlace(M.sel, false); if (PD.id) refreshPD();
   buzz([12, 30, 12]); toast(t('bk_done'), 'basket');
   if (cur === 'fest') setTimeout(() => $('#festMy').scrollIntoView({ behavior: 'smooth', block: 'center' }), 380);
+  else if (cur === 'stamp' && !PD.id) setTimeout(() => $('#stampMy').scrollIntoView({ behavior: 'smooth', block: 'center' }), 380);   // 패스 화면: 방금 만든 예약 카드로
 }
 /* 체크인 = 농장 부스 QR 스캔 */
 function checkIn(bid) { const b = S.bookings.find(x => x.id === bid); if (b) openScanner(b.farm); }
@@ -3965,8 +3996,15 @@ function bind() {
   $('#rulesLink').onclick = openRules;
   $('#vessels').addEventListener('click', e => { const v = e.target.closest('.vessel'); if (!v) return; popOnce(v, 'bump', 760); buzz(8); const c = counts(), types = v.dataset.types.split(' '); openMission = types.find(k => c[k] < MAX[k]) || types[0]; renderMissions(); const m = $(`#missions .mission[data-type="${openMission}"]`); if (m) m.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
   $('#missions').addEventListener('click', e => { const chip = e.target.closest('.pchip'); if (chip) { e.stopPropagation(); focusPlace(chip.dataset.place); return; } const m = e.target.closest('.mission'); if (!m) return; openMission = openMission === m.dataset.type ? null : m.dataset.type; $$('#missions .mission').forEach(x => x.classList.toggle('open', x.dataset.type === openMission)); });
-  $('#slots').addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.slot.filled')) { e.preventDefault(); openVisit(e.target.dataset.k); } });
-  $('#slots').addEventListener('click', e => { const s = e.target.closest('.slot'); if (!s) return; const st = s.querySelector('.st'); if (st) { openVisit(s.dataset.k); } else if (!s.classList.contains('set')) { const ty = s.dataset.k.replace(/\d/g, ''); if (ty === 'clean') openReturn(); else if (ty === 'farm') openBooking('pick'); else openScanner(null, ty); } });
+  // 스탬프 여권 — 빈 팜 칸: 체크인 전 예약이 있으면 바로 체크인(농장 QR), 없으면 예약
+  const farmSlot = () => { const b = nextBooking(); if (b) checkIn(b.id); else openBooking('pick'); };
+  $('#slots').addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    if (e.target.matches('.slot.filled')) { e.preventDefault(); openVisit(e.target.dataset.k); }
+    else if (e.target.matches('.slot.ci')) { e.preventDefault(); farmSlot(); }
+  });
+  $('#slots').addEventListener('click', e => { const s = e.target.closest('.slot'); if (!s) return; const st = s.querySelector('.st'); if (st) { openVisit(s.dataset.k); } else if (!s.classList.contains('set')) { const ty = s.dataset.k.replace(/\d/g, ''); if (ty === 'clean') openReturn(); else if (ty === 'farm') farmSlot(); else openScanner(null, ty); } });
+  $('#stampMy').addEventListener('click', e => { const b = e.target.closest('.bk-ci'); if (b) checkIn(b.dataset.bid); });   // 패스 화면 예약 카드에서 바로 체크인
   // 스캐너
   $('#scanClose').onclick = closeScanner;
   $('#scanChips').addEventListener('click', e => { const b = e.target.closest('.schip'); if (b) detect(b.dataset.place); });
