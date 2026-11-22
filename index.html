@@ -975,6 +975,91 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
 .fpane[hidden]{display:none}
 #paneComm .live-card{margin-top:14px}
 
+/* ═════════ 홈 ═════════ */
+.hm-live{padding:12px 14px;margin-top:12px}
+.hl-pass{display:flex;align-items:center;justify-content:space-between;padding:2px 2px 10px;border-bottom:1px dashed #EADFCB;font-size:var(--fs-cap);font-weight:800;color:var(--muted)}
+.hl-pass span{display:inline-flex;align-items:center;gap:6px}
+.hl-pass b{font-size:var(--fs-ui);color:var(--ras-d)}
+.hl-row{display:flex;align-items:center;gap:12px;padding:10px 0 0}
+.hl-row+.hl-row{border-top:1px solid #F3E9DA;margin-top:10px}
+.hl-ic{width:40px;height:40px;flex-shrink:0;border-radius:12px;display:grid;place-items:center;background:var(--ras-l);color:var(--ras-d)}
+.hl-t{flex:1;min-width:0}
+.hl-t small{display:block;font-size:var(--fs-cap);color:var(--muted);font-weight:700}
+.hl-t b{display:block;font-size:var(--fs-body);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sh-n em.mu{color:var(--muted)}
+.hm-hero{height:268px;margin-top:12px}
+.hm-cta{display:flex;gap:8px;margin-top:12px}
+.hm-book{flex:1;height:46px;border-radius:14px;background:var(--ras);color:#FFF4E6;font-size:var(--fs-body);font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px;position:relative;overflow:hidden;box-shadow:0 12px 20px -12px rgba(0,0,0,.6)}
+.hm-go{height:46px;padding:0 14px;border-radius:14px;background:rgba(255,255,255,.92);color:var(--iron);font-size:var(--fs-body);font-weight:800;display:flex;align-items:center;gap:2px;position:relative;overflow:hidden}
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.qa-b{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px 10px;border-radius:18px;background:#fff;box-shadow:0 1px 0 rgba(58,37,28,.05),0 14px 24px -20px rgba(58,37,28,.6);position:relative;overflow:hidden}
+.qa-b b{font-size:var(--fs-cap);font-weight:800;white-space:nowrap}
+.qa-ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--ras-l);color:var(--ras-d)}
+.qa-b:first-child .qa-ic{background:var(--ras);color:#FFF4E6}
+.hm-box,.hm-bundle{display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin-top:12px;padding:12px 14px}
+.hm-box>.ic{color:var(--muted-2);flex-shrink:0}
+.hb-art{width:96px;flex-shrink:0}
+.hb-art svg{width:100%;display:block}
+.hb-t{flex:1;min-width:0}
+.hb-t small{display:block;font-size:var(--fs-cap);color:var(--muted);font-weight:800}
+.hb-t b{display:block;font-size:var(--fs-sub);font-weight:800;margin-top:2px}
+.hb-t b s{font-size:var(--fs-cap);color:var(--muted-2);font-weight:600;margin-left:4px}
+.hb-t .meter{height:8px;border-radius:4px;background:#F3E4E2;overflow:hidden;margin:7px 0 6px}
+.hb-t .meter i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#E86F8A,#C8344F)}
+.hb-t span{display:block;font-size:var(--fs-cap);color:var(--muted);font-weight:700;line-height:1.4}
+.hm-bundle{background:linear-gradient(135deg,#FFF8F2,#FFE9EC);box-shadow:inset 0 0 0 1.5px #F4CDD4}
+.hm-sec{margin-top:22px}
+.hm-sec>.card-head{margin-bottom:10px}
+.hm-sec>.card-head h3{font-family:var(--serif);font-size:var(--fs-title)}
+.hscroll{display:flex;gap:10px;overflow-x:auto;margin:0 -16px;padding:2px 16px 14px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.hp{flex:0 0 150px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px;border-radius:20px;background:#fff;text-align:left;box-shadow:0 1px 0 rgba(58,37,28,.05),0 14px 24px -20px rgba(58,37,28,.6);position:relative;overflow:hidden}
+.hp b{font-size:var(--fs-ui);font-weight:800;margin-top:6px}
+.hp small{font-size:var(--fs-cap);color:var(--muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:39px}
+.hp em{font-style:normal;font-size:var(--fs-cap);font-weight:800;color:var(--ras-d);margin-top:2px}
+.hmn{flex:0 0 176px;scroll-snap-align:start;border-radius:20px;background:#fff;overflow:hidden;text-align:left;box-shadow:0 1px 0 rgba(58,37,28,.05),0 14px 24px -20px rgba(58,37,28,.6);position:relative}
+.hmn-art{display:block;height:116px;overflow:hidden}
+.hmn-art svg{width:100%;height:100%;display:block}
+.hmn-t{display:block;padding:10px 12px 12px}
+.hmn-t small{display:block;font-size:var(--fs-cap);color:var(--muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hmn-t b{display:block;font-size:var(--fs-ui);font-weight:800;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hmn-t em{display:block;font-style:normal;font-size:var(--fs-body);font-weight:800;color:var(--ras-d);margin-top:3px}
+.hmn-t em s{font-size:var(--fs-cap);color:var(--muted-2);font-weight:600}
+.hc{display:flex;align-items:center;gap:10px;width:100%;padding:10px;border-radius:18px;background:#fff;text-align:left;margin-bottom:8px;box-shadow:0 1px 0 rgba(58,37,28,.05),0 14px 24px -22px rgba(58,37,28,.6);position:relative;overflow:hidden}
+.hc .av{width:36px;height:36px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-weight:800}
+.hc-t{flex:1;min-width:0}
+.hc-t b{display:flex;align-items:center;gap:6px;font-size:var(--fs-cap);font-weight:800}
+.hc-t>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:var(--fs-cap);line-height:1.45;color:var(--ink);margin-top:2px}
+.hc-art{width:64px;height:64px;flex-shrink:0;border-radius:12px;overflow:hidden}
+.hc-art svg{width:100%;height:100%;display:block}
+/* 음료 고르기 */
+.drink{margin:4px 0 14px}
+.drink>p{font-size:var(--fs-cap);font-weight:800;color:var(--muted);margin-bottom:8px}
+.dr-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dr{position:relative;display:flex;align-items:center;gap:8px;padding:10px;border-radius:16px;background:#FBF5EA;text-align:left;box-shadow:inset 0 0 0 1.5px #EEE3D2;transition:box-shadow .2s,background .2s}
+.dr.on{background:#FFEDEF;box-shadow:inset 0 0 0 2px var(--ras)}
+.dr-art{width:28px;height:48px;flex-shrink:0;display:grid;place-items:center}
+.dr-art svg{height:100%;width:auto;display:block}
+.dr-t{flex:1;min-width:0}
+.dr-t b{display:block;font-size:var(--fs-cap);font-weight:800}
+.dr-t small{display:block;font-size:var(--fs-cap);color:var(--muted);line-height:1.35;margin-top:1px}
+.dr-ck{position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--ras);color:#fff;transform:scale(0);transition:transform .3s var(--spring)}
+.dr.on .dr-ck{transform:scale(1)}
+.dr-note{display:block;font-size:var(--fs-cap);color:var(--muted);margin-top:8px;line-height:1.45}
+.pk-bn{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:14px;padding:10px 12px;border-radius:14px;background:#FFF1C9;color:#6E5214;font-size:var(--fs-cap);font-weight:800}
+.pk-bn em{font-style:normal;font-weight:700;width:100%;padding-left:26px}
+.pk-buy{margin-top:12px}
+.bn-art{width:210px;margin:6px auto 0}
+.bn-art svg{width:100%;display:block}
+.bn-items{display:flex;flex-wrap:wrap;gap:6px}
+.bn-items span{height:32px;padding:0 12px;border-radius:999px;background:#F5EDE0;font-size:var(--fs-cap);font-weight:800;display:inline-flex;align-items:center}
+.bk-save s{opacity:.85}
+#bundleSheet .drink{margin-top:16px}
+
+.hm-bundle{flex-wrap:wrap}
+.hm-bundle .pg-btn{width:100%;height:44px}
+.hm-live{margin-top:12px}
+
 </style>
 </head>
 <body>
@@ -1028,6 +1113,7 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
             <h2 id="helloT"></h2>
             <p data-i18n="hello_sub"></p>
           </div>
+          <div class="fest-hero hm-hero rise" id="hmHero"></div>
           <div class="card set-card rise">
             <div class="card-head"><div><h3 data-i18n="set_title"></h3><p class="sub" data-i18n="set_sub"></p></div><span class="count-pill" id="setPill"></span></div>
             <div class="vessels" id="vessels"></div>
@@ -1164,6 +1250,7 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
       <div class="ret-ok"><svg class="ck" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" pathLength="1"/><path d="M30 52 L44 66 L71 37" pathLength="1"/></svg><h4 data-i18n="cp_done"></h4><p data-i18n="cp_paid"></p></div>
     </div>
     <div class="sheet bksheet" id="bookSheet" role="dialog" aria-modal="true"><div class="grab"></div><div id="bkBody"></div></div>
+    <div class="sheet bksheet" id="bundleSheet" role="dialog" aria-modal="true"><div class="grab"></div><div id="bnBody"></div></div>
     <div class="sheet" id="stdSheet">
       <div class="grab"></div>
       <h3 data-i18n="std_title"></h3>
@@ -1204,6 +1291,7 @@ html[lang="en"] .ir{grid-template-columns:18px 104px 1fr}
 const I = {
   app_name: ['라즈베리 패스', 'Raspberry Pass'],
   logo_sub: ['RASPBERRY PASS · GIMHAE', '라즈베리 패스 · 김해'],
+  tab_home: ['홈', 'Home'],
   tab_stamp: ['패스', 'Pass'],
   tab_fest: ['축제', 'Festival'],
   tab_map: ['지도', 'Map'],
@@ -1291,7 +1379,7 @@ const I = {
   unlock_title: ['{item} 해금!', '{item} unlocked!'],
   unlock_sub: ['출국하는 날 김해공항에서 선물 상자에 담아 드려요', 'It goes into your gift box at Gimhae Airport'],
   complete_title: ['산딸기 선물 상자 완성!', 'Raspberry gift box complete!'],
-  complete_sub: ['잼 · 초콜릿 · 건조 산딸기를 공항에서 받아 가세요', 'Jam, chocolate and dried berries: pick them up at the airport'],
+  complete_sub: ['잼 · 초콜릿 · 건조 산딸기 · 산딸기 와인을 공항에서 받아 가세요', 'Jam, chocolate, dried berries and raspberry wine: pick them up at the airport'],
   see_qr: ['수령 QR 보기', 'View pickup QR'],
 
   ret_title: ['라즈베리 쓰레기 봉투 반납', 'Return a Raspberry Trash Bag'],
@@ -1438,7 +1526,7 @@ const I = {
   st_coupons: ['메뉴 쿠폰', 'Coupons'],
   st_bags: ['남은 봉투', 'Bags left'],
   pickup: ['산딸기 선물 상자 수령', 'Raspberry gift box pickup'],
-  pk_box: ['잼 · 초콜릿 · 건조 산딸기', 'Jam · chocolate · dried berries'],
+  pk_box: ['잼 · 초콜릿 · 건조 산딸기 + 음료 1병', 'Jam · chocolate · dried berries + 1 drink'],
   pk_airport: ['공항 수령', 'Airport'],
   pk_delivery: ['택배', 'Delivery'],
   pk_airport_d: ['출국일 김해공항 수령 데스크에서 여권과 함께 QR을 보여 주세요', 'On departure, show this QR with your passport at the Gimhae Airport desk'],
@@ -1477,6 +1565,52 @@ const I = {
   n_shuttle: ['축제 셔틀 {from} → {to} · {t} 출발', 'Festival shuttle {from} → {to} · leaves {t}'],
   n_peak: ['오늘의 추천: 상동 농장 산딸기 당도 최고 — 오전에 따 보세요', 'Today’s pick: Sangdong berries at peak sweetness — pick in the morning'],
   n_coupon: ['메뉴 쿠폰 {n}장 — 율하 산딸기 카페 라떼 2,000원 할인', '{n} menu coupon(s) — ₩2,000 off a Yulha raspberry latte'],
+  /* 음료 고르기 · 선물 보따리 */
+  dr_title: ['음료 1병 고르기', 'Pick one drink'],
+  dr_wine: ['산딸기 와인', 'Raspberry wine'],
+  dr_wine_s: ['19세 이상 · 수령 때 신분증 확인', '19+ · ID checked at pickup'],
+  dr_syrup: ['산딸기 청', 'Raspberry syrup'],
+  dr_syrup_s: ['무알콜 · 누구나', 'Non-alcoholic · for everyone'],
+  dr_note: ['와인 대신 무알콜 산딸기 청으로 바꿀 수 있어요', 'Swap the wine for non-alcoholic syrup anytime'],
+  dr_set: ['음료를 {d}(으)로 골랐어요', 'Drink set to {d}'],
+  bn_title: ['산딸기 선물 보따리', 'Raspberry gift bundle'],
+  bn_sub: ['스탬프와 상관없이 사는 선물 상자 · 공항 픽업 때 함께 받아요', 'A gift box you can buy anytime · collect it with your airport pickup'],
+  bn_items: ['구성', 'Inside'],
+  bn_list: ['정가 {p}', 'List price {p}'],
+  bn_passp: ['패스 번들가 {p}', 'Pass bundle {p}'],
+  bn_qty: ['수량', 'Qty'],
+  bn_total: ['합계', 'Total'],
+  bn_pay: ['공항 데스크 결제 (데모)', 'Pay at the airport desk (demo)'],
+  bn_add: ['공항 픽업에 담기', 'Add to airport pickup'],
+  bn_done: ['선물 보따리를 담았어요! 공항에서 함께 받아요', 'Bundle added — collect it at the airport'],
+  bn_in: ['선물 보따리 {n}개 함께 수령', '{n} gift bundle(s) in your pickup'],
+  bn_btn: ['선물 보따리 사기', 'Buy a gift bundle'],
+  bn_sub_s: ['스탬프 없이 사는 선물 상자 · 공항에서 함께 수령', 'No stamps needed · collect it at the airport'],
+  bn_more: ['보따리 더 담기', 'Add another bundle'],
+  /* 홈 */
+  hm_left: ['1일권 · 남은 시간', '1-day pass · time left'],
+  hm_off: ['지금은 비시즌 · 5월 축제 주말을 데모로 보여 줘요', 'Off-season now · showing a May festival weekend demo'],
+  hm_book: ['직접 따기 예약', 'Book now'],
+  hm_fest: ['축제 보기', 'See festival'],
+  qa_book: ['축제 예약', 'Book'],
+  qa_scan: ['QR 스캔', 'Scan QR'],
+  qa_coupon: ['쿠폰 쓰기', 'Coupon'],
+  qa_return: ['봉투 반납', 'Return'],
+  hm_my: ['내 예약', 'My booking'],
+  hm_nobk: ['아직 예약이 없어요', 'No booking yet'],
+  hm_nobk_s: ['직접 따기 · 패스 13,000원', 'Picking · ₩13,000'],
+  hm_shuttle: ['다음 축제 셔틀', 'Next festival shuttle'],
+  hm_table: ['시간표', 'Times'],
+  hm_box: ['산딸기 선물 상자', 'Raspberry gift box'],
+  hm_box_s: ['남은 미션 · {list}', 'To go · {list}'],
+  hm_box_done: ['완성! 공항에서 받아 가세요', 'Complete! Pick it up at the airport'],
+  hm_l_farm: ['농장 체크인', 'farm check-in'],
+  hm_l_taste: ['어트랙션·메뉴 {n}곳', '{n} attraction/menu'],
+  hm_l_clean: ['봉투 반납 {n}번', '{n} bag return(s)'],
+  hm_progs: ['축제 프로그램', 'Festival programs'],
+  hm_menus: ['오늘의 산딸기 메뉴', 'Today’s raspberry menus'],
+  hm_comm: ['커뮤니티 새 글', 'New in Community'],
+  hm_more: ['더 보기', 'More'],
   lang_changed: ['한국어로 바꿨어요', 'Switched to English'],
 
   /* 장소 상세 */
@@ -1529,7 +1663,7 @@ const I = {
   vs_hint: ['찍힌 도장을 누르면 방문한 곳을 볼 수 있어요', 'Tap a stamp to see where you collected it'],
   vs_set_when: ['{d} 선물 상자 완성', 'Gift box completed {d}'],
   vs_set_title: ['산딸기 선물 상자', 'Raspberry Gift Box'],
-  vs_set_sub: ['잼 · 초콜릿 · 건조 산딸기 — 출국하는 날 김해국제공항에서', 'Jam, chocolate, dried berries — at Gimhae Airport on departure'],
+  vs_set_sub: ['잼 · 초콜릿 · 건조 산딸기 · 와인(또는 무알콜 청) — 출국하는 날 김해국제공항에서', 'Jam, chocolate, dried berries, wine (or syrup) — at Gimhae Airport on departure'],
   vs_set_where: ['수령 장소', 'Pickup spot'],
 };
 
@@ -1547,7 +1681,9 @@ const missionOf = type => type;
 const USER = { name: 'Priya', cc: 'IN', color: '#E0703F', home: 'Mumbai, India' };
 
 /* 가격 (사업계획서 기준, 원) */
-const PRICE = { pass: 15000, pick: 15000, pickPass: 13000, make: 12000, coupon: 2000, box: 25000, ret: 300 };
+const PRICE = { pass: 15000, pick: 15000, pickPass: 13000, make: 12000, coupon: 2000, box: 25000, boxPass: 20000, ret: 300 };
+/* 선물 상자·보따리에 들어가는 음료 1병 — 픽업 때 고르기 */
+const DRINKS = ['wine', 'syrup'];
 const COUPONS = 3, BAGS = 3;
 /* 축제 데모 주말 — 2027 시범 시즌의 한 주말 (토·일) */
 const FEST_DAYS = [{ k: 'sat', d: new Date(2027, 4, 15) }, { k: 'sun', d: new Date(2027, 4, 16) }];
@@ -1588,8 +1724,8 @@ const PLACES = [
       en: 'A sample restaurant near the world-food street: raspberry salads and yogurt bowls made with no pork or alcohol.' } },
   { id: 'souvenir', cat: 'menu', stamp: 'taste', ret: true, menu: true, x: 716, y: 632,
     name: { ko: '김해 산딸기 기념품 가게 (예시)', en: 'Gimhae Raspberry Gift Shop (sample)' }, short: { ko: '산딸기 기념품 가게', en: 'Raspberry Gift Shop' },
-    desc: { ko: '김해 농가에서 만든 산딸기 잼·초콜릿·건조 산딸기를 맛보고 사는 가게 예시. 선물 상자 구성품을 미리 볼 수 있어요.',
-      en: 'A sample shop where you taste and buy jam, chocolate and dried berries made by Gimhae farms: a preview of the gift box.' } },
+    desc: { ko: '김해 농가에서 만든 산딸기 잼·초콜릿·건조 산딸기와 김해 산딸기 와인을 보고 사는 가게 예시. 선물 상자 구성품을 미리 볼 수 있어요.',
+      en: 'A sample shop for jam, chocolate, dried berries and Gimhae raspberry wine made from local farms: a preview of the gift box.' } },
   { id: 'info', cat: 'return', ret: true, x: 524, y: 668,
     name: { ko: '김해관광안내소', en: 'Gimhae Tourist Info Center' }, short: { ko: '관광안내소', en: 'Tourist Info' },
     desc: { ko: '다국어 여행 안내와 쓰레기 봉투 반납. 축제 셔틀 시간표와 웰컴 키트 분실도 여기서 도와드려요.',
@@ -1667,8 +1803,8 @@ const POSTS = [
     tr: { ko: '산딸기를 따고 열차카페에서 산딸기 에이드 한 잔! 메뉴 쿠폰으로 2,000원 할인받았어요 🍓', en: 'After picking, a raspberry ade at the train café! The menu coupon took ₩2,000 off 🍓' } },
   { id: 'p5', user: 'Emma', cc: 'US', color: '#D9A93F', place: 'airport', scene: 'box', stamp: 'set', likes: 352, comments: 44, tags: ['giftbox', 'clean'],
     time: { ko: '어제', en: 'yesterday' },
-    orig: { lang: 'en', text: 'Five stamps, one raspberry gift box! Jam, chocolate and dried berries picked up at Gimhae Airport — and zero trash left behind.' },
-    tr: { ko: '스탬프 다섯 개로 산딸기 선물 상자 완성! 잼·초콜릿·건조 산딸기를 김해공항에서 받았어요. 쓰레기는 하나도 남기지 않고요.' } },
+    orig: { lang: 'en', text: 'Five stamps, one raspberry gift box! Jam, chocolate, dried berries and a bottle of Gimhae raspberry wine, picked up at Gimhae Airport — and zero trash left behind.' },
+    tr: { ko: '스탬프 다섯 개로 산딸기 선물 상자 완성! 잼·초콜릿·건조 산딸기에 김해 산딸기 와인까지 김해공항에서 받았어요. 쓰레기는 하나도 남기지 않고요.' } },
 ];
 const TAGS = ['all', 'festival', 'make', 'fresh', 'clean', 'giftbox'];
 const CC_C = { IN: '#C25E00', SA: '#0B6B3A', TR: '#E30A17', JP: '#BC002D', VN: '#DA251D', TW: '#1B3A8C', US: '#3C3B6E', MY: '#0B2F7A' };
@@ -1839,7 +1975,7 @@ const INFO = (() => {
       intro: T('김해 농가에서 만든 산딸기 잼·초콜릿·건조 산딸기를 맛보고 사는 기념품 가게 예시예요. 선물 상자에 들어가는 구성품을 미리 볼 수 있어요.',
         'A sample gift shop where you taste and buy jam, chocolate and dried berries made by Gimhae farms: a preview of what goes into the gift box.'),
       hi: [
-        ['gift', T('선물 상자 미리 보기', 'Gift box preview'), T('스탬프 5개로 받는 잼·초콜릿·건조 산딸기를 맛볼 수 있어요.', 'Taste the jam, chocolate and dried berries your five stamps earn.')],
+        ['gift', T('선물 상자 미리 보기', 'Gift box preview'), T('스탬프 5개로 받는 잼·초콜릿·건조 산딸기와 산딸기 와인(또는 무알콜 청)을 미리 볼 수 있어요.', 'Preview the jam, chocolate, dried berries and raspberry wine (or non-alcoholic syrup) your five stamps earn.')],
         CPN, BAG,
       ],
       hours: SHOP_H, closed: SHOP_OFF, fee: COUPON,
@@ -1871,7 +2007,7 @@ const INFO = (() => {
         'Where your Raspberry Pass trip starts and ends: get the pass and welcome kit (pass card, three QR trash bags, stamp map) on arrival, and your raspberry gift box, earned with five stamps, on departure (planned).'),
       hi: [
         ['ticket', T('패스 구매 · 웰컴 키트', 'Pass & welcome kit'), T('공항이나 앱에서 15,000원 1일권을 사고 키트를 받아요 (서비스 예정).', 'Buy the ₩15,000 one-day pass here or in the app and collect the kit (planned).')],
-        ['gift', T('선물 상자 수령', 'Gift box pickup'), T('잼·초콜릿·건조 산딸기 — 출국 수속 전에 수령 데스크로 (서비스 예정).', 'Jam, chocolate and dried berries: visit the desk before check-in (planned).')],
+        ['gift', T('선물 상자 · 보따리 수령', 'Gift box & bundle pickup'), T('잼·초콜릿·건조 산딸기 + 와인 또는 무알콜 청 — 출국 수속 전에 수령 데스크로 (서비스 예정).', 'Jam, chocolate, dried berries + wine or non-alcoholic syrup: visit the desk before check-in (planned).')],
         ['train', T('경전철 연결', 'LRT link'), T('공항역에서 부산김해경전철을 타면 김해 시내로 바로 가요.', 'The Busan–Gimhae LRT from Airport Station runs straight into Gimhae.')],
       ],
       hours: T('수령 데스크 운영 시간은 서비스 출시 때 안내해요', 'Desk hours will be announced at launch'), closed: T('—', '—'), fee: T('패스 15,000원 (1일권)', 'Pass ₩15,000 (1 day)'),
@@ -1890,6 +2026,9 @@ const ART = (() => {
   const C = { iron: '#2A1C15', cream: '#F7F2EA', yellow: '#FFDA6B', gold: '#D9A93F', ras: '#D23A55', rasD: '#9E2238', rasL: '#F58BA0', leaf: '#5E9C4E', leafD: '#3F7A3E' };
 
   const ICONS = {
+    home: '<path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M5.8 9.6V19.5h12.4V9.6"/><path d="M10 19.5v-5.2h4v5.2"/>',
+    wine: '<path d="M10 3h4v4.5c0 1.2 2.8 2.4 2.8 5.6v7.4a1.5 1.5 0 0 1-1.5 1.5H8.7a1.5 1.5 0 0 1-1.5-1.5v-7.4c0-3.2 2.8-4.4 2.8-5.6z"/><path d="M7.2 13.5h9.6v4.5H7.2z"/>',
+    syrup: '<path d="M9.5 3h5v3.5h-5z"/><path d="M8 6.5h8a2 2 0 0 1 2 2V19a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 6 19V8.5a2 2 0 0 1 2-2z"/><path d="M6 12.5c2 1.2 4 1.2 6 0s4-1.2 6 0"/>',
     berry: '<path d="M12 8.2c3.4 0 5.8 2.4 5.8 5.7 0 3.8-2.8 6.6-5.8 6.6s-5.8-2.8-5.8-6.6c0-3.3 2.4-5.7 5.8-5.7z"/><path d="M9.6 12.2h.01M12 11.4h.01M14.4 12.2h.01M10.6 14.8h.01M13.4 14.8h.01M12 17.4h.01" stroke-width="2.6"/><path d="M12 8.2V4.8M12 7c-1.3-1.7-3.2-2.1-4.7-1.4M12 7c1.3-1.7 3.2-2.1 4.7-1.4"/>',
     basket: '<path d="M3.5 10.5h17l-1.9 8.8a1.6 1.6 0 0 1-1.6 1.2H7a1.6 1.6 0 0 1-1.6-1.2z"/><path d="M7.5 10.5l3-6M16.5 10.5l-3-6M8.8 14v3.5M12 14v3.5M15.2 14v3.5"/>',
     jar: '<path d="M7.5 8h9v1.6a4 4 0 0 1 2 3.4v5.5a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2V13a4 4 0 0 1 2-3.4z"/><path d="M6.8 4.5h10.4V8H6.8zM9 14.5h6"/>',
@@ -2006,8 +2145,24 @@ const ART = (() => {
     return g;
   }
 
-  const VB = { jam: [10, 14, 100, 102], choco: [20, 8, 80, 106], dried: [14, 8, 92, 108] };
-  const PIECE = { jam: jamJar, choco: chocoBar, dried: driedPouch };
+  /* 산딸기 와인 — 산딸기색 캡슐을 씌운 와인병 */
+  function wineBottle({ glass = '#4A1426', cap = '#C8344F', label = '#FFF4E6', ink = '#8E2440', detail = true } = {}) {
+    let g = `<path d="M54 8 H66 V40 C 66 48, 80 50, 80 62 V112 Q80 118 74 118 H46 Q40 118 40 112 V62 C 40 50, 54 48, 54 40 Z" fill="${glass}"/>`;
+    g += `<rect x="53" y="5" width="14" height="21" rx="2.5" fill="${cap}"/><path d="M53 21 H67" stroke="#fff" stroke-opacity=".35" stroke-width="1.4"/><rect x="42" y="68" width="36" height="35" rx="3" fill="${label}"/>`;
+    if (detail) g += berry(60, 81, .34) + `<text x="60" y="98.5" font-size="7.4" font-weight="800" fill="${ink}" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing=".8">WINE</text>`;
+    return g + `<path d="M46 58 V110" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".22"/>`;
+  }
+  /* 무알콜 산딸기 청 — 코르크 마개 유리병 */
+  function syrupBottle({ glass = '#F6E4E8', syrup = '#B3213E', cork = '#C79A68', label = '#FFF8EC', ink = '#8E2440', detail = true } = {}) {
+    const id = nid('sy'), body = 'M44 40 H76 Q84 40 84 50 V110 Q84 118 76 118 H44 Q36 118 36 110 V50 Q36 40 44 40 Z';
+    let g = `<defs><clipPath id="${id}"><path d="${body}"/></clipPath></defs><rect x="50" y="24" width="20" height="18" rx="2" fill="${glass}"/><rect x="51" y="11" width="18" height="15" rx="3" fill="${cork}"/><path d="${body}" fill="${glass}"/><g clip-path="url(#${id})"><rect x="30" y="56" width="60" height="70" fill="${syrup}"/></g>`;
+    g += `<rect x="42" y="72" width="36" height="28" rx="4" fill="${label}" stroke="${ink}" stroke-width="1.3"/>`;
+    if (detail) g += berry(60, 82, .3) + `<text x="60" y="96.4" font-size="6.6" font-weight="800" fill="${ink}" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing=".5">SYRUP</text>`;
+    return g + `<path d="M41 54 V106" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".45"/>`;
+  }
+
+  const VB = { jam: [10, 14, 100, 102], choco: [20, 8, 80, 106], dried: [14, 8, 92, 108], wine: [34, 2, 52, 120], syrup: [30, 8, 60, 114] };
+  const PIECE = { jam: jamJar, choco: chocoBar, dried: driedPouch, wine: wineBottle, syrup: syrupBottle };
   const GHOST = {
     jam: { jam: '#F1E2E2', jamD: '#EAD7D7', glass: '#F7EFEC', rim: '#E7D7D3', clothA: '#EAD8D5', clothB: '#FBF5F0', label: '#FCF8F3', ink: '#E7D7D3', detail: false },
     choco: { choc: '#EFE4DC', chocL: '#F4EBE5', chocD: '#E7DAD0', foil: '#F5F2ED', wrap: '#F2E2E2', wrapD: '#EBD6D6', band: '#FCF8F3', ink: '#E9DAD7', bits: '#F2E2E2', detail: false },
@@ -2026,14 +2181,15 @@ const ART = (() => {
     return `<svg viewBox="${X0} ${Y0} ${W} ${H}" aria-hidden="true"><defs><mask id="${id}" maskUnits="userSpaceOnUse" x="${X0 - 20}" y="${Y0 - 20}" width="${W + 40}" height="${H + 40}"><g class="lvl" data-y0="${Y0}" data-h="${H}" data-a="${amp}" transform="translate(0 ${Y0 + H + amp * 2 + 6})"><path d="${d}" fill="#fff"><animateTransform attributeName="transform" type="translate" from="0 0" to="${wl} 0" dur="1.7s" repeatCount="indefinite"/></path></g></mask></defs>${piece(kind, GHOST[kind])}<g mask="url(#${id})">${piece(kind)}</g></svg>`;
   }
 
-  /* 산딸기 선물 상자 (200×170) — 열린 크라프트 상자에 잼·초콜릿·건조 산딸기 */
-  function giftBox() {
+  /* 산딸기 선물 상자 (200×170) — 잼 · 초콜릿 · 건조 산딸기 + 와인(또는 무알콜 청) */
+  function giftBox(drink = 'wine') {
     const id = nid('gb');
     const item = (kind, x, y, s, r = 0) => { const [vx, vy, vw, vh] = VB[kind]; return `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s}) translate(${-vx - vw / 2} ${-vy - vh})">${piece(kind)}</g>`; };
+    const bottle = drink === 'syrup' ? item('syrup', 160, 120, .8, 5) : drink === 'wine' ? item('wine', 160, 122, .9, 5) : '';
     return `<svg viewBox="0 0 200 170" aria-hidden="true"><defs>${grad(id + 'k', [[0, '#D9AE7E'], [1, '#B98654']])}</defs>
       <ellipse cx="100" cy="158" rx="86" ry="9" fill="#2A1C15" opacity=".16"/>
-      <path d="M150 34 L 186 22 L 192 96 L 156 104 Z" fill="#C79A68"/><path d="M150 34 L 186 22 L 188 40 L 151 50 Z" fill="#B3824F"/><path d="M168 28 L 171 101" stroke="#C8344F" stroke-width="7"/>
-      ${item('dried', 58, 112, .62, -6)}${item('choco', 100, 110, .66, 3)}${item('jam', 142, 114, .6, 5)}
+      <path d="M50 36 L 14 24 L 8 98 L 44 106 Z" fill="#C79A68"/><path d="M50 36 L 14 24 L 12 42 L 49 52 Z" fill="#B3824F"/><path d="M32 30 L 29 103" stroke="#C8344F" stroke-width="7"/>
+      ${bottle}${item('dried', 50, 112, .58, -6)}${item('choco', 84, 110, .6, -2)}${item('jam', 120, 114, .52, 4)}
       <path d="M22 88 H178 L170 152 Q100 160 30 152 Z" fill="url(#${id}k)"/><path d="M22 88 H178 L176 100 H24 Z" fill="#A87747" opacity=".55"/>
       <path d="M96 88 V156 M104 88 V156" stroke="#C8344F" stroke-width="7"/><path d="M22 112 H178" stroke="#C8344F" stroke-width="6" opacity=".9"/>
       <path d="M100 112 C 82 92, 62 104, 76 116 C 84 122, 94 118, 100 112 Z M100 112 C 118 92, 138 104, 124 116 C 116 122, 106 118, 100 112 Z" fill="#D9475F" stroke="#9E2238" stroke-width="2" stroke-linejoin="round"/><circle cx="100" cy="113" r="6" fill="#9E2238"/>
@@ -2553,7 +2709,7 @@ function defaults() {
   const now = Date.now();
   return { lang: 'ko', stamps: [{ type: 'taste', place: 'railpark', t: now - 5 * 36e5 }, { type: 'taste', place: 'traincafe', t: now - 4.5 * 36e5 }, { type: 'clean', place: 'traincafe', t: now - 4.4 * 36e5 }],
     bags: BAGS - 1, returns: [{ place: 'traincafe', t: now - 4.4 * 36e5 }], coupons: [{ place: 'traincafe', item: MENUS.traincafe[0][0], t: now - 4.5 * 36e5 }], bookings: [], likes: {}, saves: {}, myPosts: [],
-    pickup: 'airport', notif: true, read: false, passEnd: now + (9 * 60 + 42) * 6e4 + 9e3, setT: 0 };
+    pickup: 'airport', drink: 'wine', bundles: [], notif: true, read: false, passEnd: now + (9 * 60 + 42) * 6e4 + 9e3, setT: 0 };
 }
 /* 데모 상태는 메모리에만 둬요 — 새로고침하면 처음 상태로 돌아가요 */
 function load() { return defaults(); }
@@ -2705,7 +2861,7 @@ function fmtLeft() {
   const h = Math.floor(ms / 36e5), m = Math.floor(ms % 36e5 / 6e4), s = Math.floor(ms % 6e4 / 1e3);
   return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
-function tick() { $('#tkLeft').textContent = fmtLeft(); }
+function tick() { const v = fmtLeft(); $('#tkLeft').textContent = v; const h = $('#hmLeft'); if (h) h.textContent = v; }
 
 function buildVessels() {
   $('#vessels').innerHTML = VESSELS.map(v => `<div class="vessel" data-k="${v.k}" data-types="${v.types.join(' ')}" data-p="0"><span class="ribbon">${t('unlocked')}</span>${ART.vessel(v.k)}<div class="vl">${t(v.lab)}</div><div class="vc"></div></div>`).join('');
@@ -2833,7 +2989,7 @@ async function celebrateUnlock(type) {
   return p;
 }
 async function celebrateComplete() {
-  const p = celeShow({ art: `<div class="giftbig">${ART.giftBox()}</div>`, title: t('complete_title'), sub: t('complete_sub'), btn: t('see_qr') });
+  const p = celeShow({ art: `<div class="giftbig">${ART.giftBox(S.drink)}</div>`, title: t('complete_title'), sub: t('complete_sub'), btn: t('see_qr') });
   await sleep(300); fireworks(); goldRain();
   return p;
 }
@@ -3521,6 +3677,7 @@ function renderProgs() {
 }
 /* 내 예약 */
 function renderBookings() {
+  renderHomeLive();
   const list = S.bookings.map(b => {
     const f = PLACE[b.farm], d = FEST_DAYS.find(x => x.k === b.day).d;
     return `<div class="bk-tk${b.checked ? ' done' : ''}"><div class="bk-l"><small>${esc(L(PROGRAMS[0].name))}${b.make ? ` + ${esc(L(PROGRAMS[1].name))}` : ''}</small><b>${esc(L(f.short))}</b><span>${fdate(d)} · ${b.slot} · ${t('fe_ppl', { n: b.ppl })}</span><em>${won(b.price)} · ${t('bk_pay')}</em></div><div class="bk-r"><div class="bk-qr">${ART.qr(b.seed, 58)}</div>${b.checked ? `<span class="bk-ok">${ART.ic('check', 14, 3)}${t('fe_checked')}</span>` : `<button class="bk-ci rip" data-bid="${b.id}">${ART.ic('qr', 15, 2.2)}${t('p_checkin')}</button>`}</div></div>`;
@@ -3624,14 +3781,85 @@ function renderMy() {
   const tot = total();
   $('#stats').innerHTML = ringHTML(tot, NEED, '#C8344F', t('st_stamps'), `${tot}/${NEED}`) + ringHTML(cpLeft(), COUPONS, '#D2711F', t('st_coupons'), `${cpLeft()}/${COUPONS}`) + ringHTML(S.bags, BAGS, '#2F8A68', t('st_bags'), `${S.bags}/${BAGS}`);
   const done = isComplete(), left = NEED - tot;
-  $('#pickup').innerHTML = `<div class="card-head"><div><h3>${t('pickup')}</h3><p class="sub">${t('pk_box')}</p></div><small>PICKUP</small></div><div class="pk-box${done ? ' on' : ''}">${ART.giftBox()}</div><div class="seg${S.pickup === 'delivery' ? ' r' : ''}" id="pkSeg"><i class="seg-thumb"></i><button data-v="airport" class="${S.pickup === 'airport' ? 'on' : ''}">${ART.ic('plane', 16)}${t('pk_airport')}</button><button data-v="delivery" class="${S.pickup === 'delivery' ? 'on' : ''}">${ART.ic('gift', 16)}${t('pk_delivery')}</button></div><div class="pk-body"><div class="pk-qr${done ? '' : ' locked'}">${ART.qr(77, 90)}${done ? '' : `<span class="lock">${ART.ic('lock', 28, 2.2)}</span>`}</div><div><b class="pk-st">${done ? t('pk_ready') : t('pk_locked', { n: left })}</b><p class="pk-d">${S.pickup === 'airport' ? t('pk_airport_d') : t('pk_delivery_d')}</p></div></div>`;
+  const bn = S.bundles.reduce((a, x) => a + x.n, 0);
+  $('#pickup').innerHTML = `<div class="card-head"><div><h3>${t('pickup')}</h3><p class="sub">${t('pk_box')}</p></div><small>PICKUP</small></div><div class="pk-box${done ? ' on' : ''}">${ART.giftBox(S.drink)}</div>${drinkHTML(S.drink, 'pk')}<div class="seg${S.pickup === 'delivery' ? ' r' : ''}" id="pkSeg"><i class="seg-thumb"></i><button data-v="airport" class="${S.pickup === 'airport' ? 'on' : ''}">${ART.ic('plane', 16)}${t('pk_airport')}</button><button data-v="delivery" class="${S.pickup === 'delivery' ? 'on' : ''}">${ART.ic('gift', 16)}${t('pk_delivery')}</button></div><div class="pk-body"><div class="pk-qr${done ? '' : ' locked'}">${ART.qr(77, 90)}${done ? '' : `<span class="lock">${ART.ic('lock', 28, 2.2)}</span>`}</div><div><b class="pk-st">${done ? t('pk_ready') : t('pk_locked', { n: left })}</b><p class="pk-d">${S.pickup === 'airport' ? t('pk_airport_d') : t('pk_delivery_d')}</p></div></div>${bn ? `<div class="pk-bn">${ART.ic('gift', 18, 2)}<span>${t('bn_in', { n: bn })}</span><em>${S.bundles.map(x => `${t(x.drink === 'wine' ? 'dr_wine' : 'dr_syrup')} ×${x.n}`).join(' · ')}</em></div>` : ''}<button class="btn-o wbtn rip pk-buy" id="pkBuy">${ART.ic('gift', 18)} ${t(bn ? 'bn_more' : 'bn_btn')}</button>`;
   const c = counts();
   const B = [['b_farm', 'basket', TYPE_C.farm, c.farm >= MAX.farm, 'b_farm_d'], ['b_taste', 'cup', TYPE_C.taste, c.taste >= MAX.taste, 'b_taste_d'], ['b_make', 'jar', '#E0703F', S.bookings.some(x => x.make && x.checked), 'b_make_d'], ['b_clean', 'leaf', TYPE_C.clean, c.clean >= MAX.clean, 'b_clean_d'], ['b_set', 'gift', TYPE_C.set, done, 'b_set_d']];
   $('#badges').innerHTML = B.map(([k, i, col, ok, d]) => `<div class="badge${ok ? '' : ' locked'}" style="--c:${col}"><div class="medal">${ART.ic(ok ? i : 'lock', 24, 2)}</div><b>${t(k)}</b><small>${t(d)}</small></div>`).join('');
   $('#menu').innerHTML = `<button class="mi" data-a="rules">${ART.ic('book', 20)}<span>${t('menu_rules')}</span><span class="v">${ART.ic('chev', 16)}</span></button><button class="mi" data-a="std">${ART.ic('leaf', 20)}<span>${t('menu_std')}</span><span class="v">${ART.ic('chev', 16)}</span></button><button class="mi" data-a="notif">${ART.ic('bell', 20)}<span>${t('menu_notif')}</span><span class="switch${S.notif ? ' on' : ''}"></span></button><button class="mi" data-a="help">${ART.ic('help', 20)}<span>${t('menu_help')}</span><span class="v">${ART.ic('chev', 16)}</span></button>`;
   if (cur === 'my') animateRings();
+  renderHomeLive();
 }
 function onMyShow() { animateRings(); }
+
+/* 음료 1병 고르기 — 산딸기 와인 / 무알콜 산딸기 청 */
+function drinkHTML(sel, scope) {
+  return `<div class="drink" data-scope="${scope}"><p>${t('dr_title')}</p><div class="dr-opts">${DRINKS.map(d => `<button class="dr${sel === d ? ' on' : ''}" data-d="${d}" aria-pressed="${sel === d}"><span class="dr-art">${ART.mini(d)}</span><span class="dr-t"><b>${t('dr_' + d)}</b><small>${t('dr_' + d + '_s')}</small></span><i class="dr-ck">${ART.ic('check', 14, 3)}</i></button>`).join('')}</div><small class="dr-note">${t('dr_note')}</small></div>`;
+}
+/* 산딸기 선물 보따리 — 스탬프와 상관없이 사는 선물 상자 (정가 25,000원 · 패스 번들 20,000원) */
+const BN = { n: 1, drink: 'wine' };
+function openBundle() { closePops(); if (busy) return; BN.n = 1; BN.drink = S.drink; renderBundleSheet(); openSheet('bundleSheet'); buzz(8); }
+function renderBundleSheet() {
+  const items = ['v_jam', 'v_choco', 'v_dried'].map(k => t(k)).concat(t(BN.drink === 'wine' ? 'dr_wine' : 'dr_syrup'));
+  $('#bnBody').innerHTML = `<h3>${t('bn_title')}</h3><p class="sub">${t('bn_sub')}</p>
+    <div class="bn-art">${ART.giftBox(BN.drink)}</div>
+    <div class="bk-sec"><p>${t('bn_items')}</p><div class="bn-items">${items.map(x => `<span>${esc(x)}</span>`).join('')}</div></div>
+    ${drinkHTML(BN.drink, 'bn')}
+    <div class="bk-sec bk-line"><p>${t('bn_qty')}</p><div class="stepper"><button data-k="n" data-v="-1" aria-label="−"${BN.n <= 1 ? ' disabled' : ''}>${ART.ic('minus', 18, 2.4)}</button><b class="mono">${BN.n}</b><button data-k="n" data-v="1" aria-label="+"${BN.n >= 5 ? ' disabled' : ''}>${ART.ic('plus', 18, 2.4)}</button></div></div>
+    <div class="bk-sum"><div><small>${t('bn_total')} · ${t('bn_pay')}</small><b class="mono">${won(PRICE.boxPass * BN.n)}</b></div><span class="bk-save"><s>${t('bn_list', { p: won(PRICE.box * BN.n) })}</s></span></div>
+    <button class="btn-p wbtn rip" id="bnGo">${ART.ic('gift', 18, 2.2)} ${t('bn_add')}</button>`;
+}
+function confirmBundle() {
+  const same = S.bundles.find(x => x.drink === BN.drink);
+  if (same) same.n += BN.n; else S.bundles.push({ n: BN.n, drink: BN.drink });
+  save(); closeSheets(); renderMy(); buzz([12, 30, 12]); toast(t('bn_done'), 'gift');
+}
+
+/* ═════════ 홈 — 축제로 바로 가는 메인 화면 ═════════ */
+function renderHome() {
+  const [a, b] = FEST_DAYS.map(x => x.d), m = new Date().getMonth() + 1, off = !(m >= 3 && m <= 6);
+  $('#hmHero').innerHTML = `<div class="fh-art">${ART.scene('farm')}</div><div class="fh-shade"></div>
+    <div class="fh-txt"><small>${t('fe_kicker')}</small><h2>${t('fe_title')}</h2><p>${t('fe_sub')}</p>
+    <div class="fh-chips"><span>${ART.ic('cal', 15, 2.2)}${t('fe_next')} · ${fdate(a, false)}–${fdate(b, false)}</span></div>
+    <div class="hm-cta"><button class="hm-book rip" data-h="book">${ART.ic('basket', 18, 2.2)}${t('hm_book')} · ${won(PRICE.pickPass)}</button><button class="hm-go rip" data-h="fest">${t('hm_fest')}${ART.ic('chev', 16, 2.6)}</button></div></div>`;
+  if (!$('#hmQuick')) return;
+  $('#hmQuick').innerHTML = [['book', 'basket', 'qa_book'], ['scan', 'qr', 'qa_scan'], ['coupon', 'ticket', 'qa_coupon'], ['return', 'bag', 'qa_return']]
+    .map(([k, i, l]) => `<button class="qa-b rip" data-h="${k}"><span class="qa-ic">${ART.ic(i, 22, 2)}</span><b>${t(l)}</b></button>`).join('');
+  $('#hmProgs').innerHTML = PROGRAMS.map(pg => {
+    const price = pg.id === 'pick' ? t('fe_with_pass', { p: won(PRICE.pickPass) }) : pg.id === 'make' ? `+${won(PRICE.make)}` : pg.id === 'market' ? t('fe_coupon') : t('fe_deal');
+    return `<button class="hp rip" data-prog="${pg.id}"${pg.book ? '' : ` data-place="${pg.place}"`}><span class="pg-ic">${ART.ic(pg.ic, 22, 2)}</span><b>${esc(L(pg.name))}</b><small>${esc(L(pg.desc))}</small><em>${price}</em></button>`;
+  }).join('');
+  const shops = [['cafe_yh', 'berrycafe'], ['traincafe', 'traincafe'], ['bakery', 'bakery'], ['dessert', 'bingsu'], ['resto', 'salad']];
+  $('#hmMenus').innerHTML = shops.map(([id, sc]) => { const [n, pr] = MENUS[id][0]; return `<button class="hmn rip" data-place="${id}"><span class="hmn-art">${ART.scene(sc)}</span><span class="hmn-t"><small>${esc(L(PLACE[id].short))}</small><b>${esc(L(n))}</b><em><s>${won(pr)}</s> ${won(pr - PRICE.coupon)}</em></span></button>`; }).join('');
+  $('#hmComm').innerHTML = allPosts().slice(0, 2).map(p => { const tx = p.orig.lang !== S.lang && p.tr && p.tr[S.lang] ? p.tr[S.lang] : p.orig.text; return `<button class="hc rip" data-h="comm"><span class="av" style="--c:${p.color}">${esc(p.user[0])}</span><span class="hc-t"><b>${esc(p.user)} <span class="cc" style="--c:${CC_C[p.cc] || '#555'}">${p.cc}</span></b><span>${esc(tx)}</span></span><span class="hc-art">${ART.scene(p.scene)}</span></button>`; }).join('');
+  renderHomeLive();
+}
+function renderHomeLive() {
+  if (!$('#hmLive')) return;
+  const bk = S.bookings.find(x => !x.checked), sh = SHUTTLES[0], nd = nextDep(sh);
+  const bkRow = bk ? `<div class="hl-row"><span class="hl-ic">${ART.ic('basket', 20, 2)}</span><div class="hl-t"><small>${t('hm_my')}</small><b>${esc(L(PLACE[bk.farm].short))} · ${fdate(FEST_DAYS.find(x => x.k === bk.day).d)} ${bk.slot}</b></div><button class="bk-ci rip" data-h="checkin" data-bid="${bk.id}">${ART.ic('qr', 15, 2.2)}${t('p_checkin')}</button></div>`
+    : `<div class="hl-row"><span class="hl-ic">${ART.ic('basket', 20, 2)}</span><div class="hl-t"><small>${t('hm_nobk')}</small><b>${t('hm_nobk_s')}</b></div><button class="pg-btn rip" data-h="book">${t('fe_book')}</button></div>`;
+  const shRow = `<div class="hl-row"><span class="hl-ic">${ART.ic('bus', 20, 2)}</span><div class="hl-t"><small>${t('hm_shuttle')}</small><b>${esc(L(sh.from))} → ${esc(L(PLACE[sh.to].short))}</b></div><div class="sh-n${nd.ended ? ' off' : ''}"><b class="mono">${nd.t}</b>${nd.first || nd.ended ? `<em class="mu">${t('fe_first_dep')}</em>` : `<em>${t('fe_in', { n: nd.in })}</em>`}</div></div>`;
+  $('#hmLive').innerHTML = `<div class="hl-pass"><span>${ART.ic('ticket', 16, 2.2)}${t('hm_left')}</span><b class="mono" id="hmLeft">${fmtLeft()}</b></div>${bkRow}${shRow}`;
+  const c = counts(), tot = total(), done = isComplete();
+  const left = [c.farm < MAX.farm ? t('hm_l_farm') : null, c.taste < MAX.taste ? t('hm_l_taste', { n: MAX.taste - c.taste }) : null, c.clean < MAX.clean ? t('hm_l_clean', { n: MAX.clean - c.clean }) : null].filter(Boolean).join(' · ');
+  $('#hmBox').innerHTML = `<div class="hb-art">${ART.giftBox(S.drink)}</div><div class="hb-t"><small>${t('hm_box')}</small><b>${t('set_meter', { n: tot })}</b><div class="meter"><i style="width:${tot / NEED * 100}%"></i></div><span>${done ? t('hm_box_done') : t('hm_box_s', { list: left })}</span></div>${ART.ic('chev', 18, 2.4)}`;
+  const bn = S.bundles.reduce((a, x) => a + x.n, 0);
+  $('#hmBundle').innerHTML = `<div class="hb-art">${ART.giftBox(S.drink)}</div><div class="hb-t"><small>${t('bn_title')}</small><b>${won(PRICE.boxPass)} <s>${won(PRICE.box)}</s></b><span>${bn ? t('bn_in', { n: bn }) : t('bn_sub_s')}</span></div><button class="pg-btn rip" data-h="bundle">${t(bn ? 'bn_more' : 'bn_btn')}</button>`;
+}
+function homeAct(k, el) {
+  if (k === 'book') openBooking('pick');
+  else if (k === 'fest') { go('fest'); setFestTab('fest'); }
+  else if (k === 'scan') openScanner();
+  else if (k === 'coupon') openCoupon();
+  else if (k === 'return') openReturn();
+  else if (k === 'checkin') checkIn(el.dataset.bid);
+  else if (k === 'bundle') openBundle();
+  else if (k === 'box') go('stamp');
+  else if (k === 'comm') { go('fest'); setFestTab('comm'); }
+  else if (k === 'shuttle') { go('fest'); setFestTab('fest'); setTimeout(() => $('#festShuttle').scrollIntoView({ behavior: 'smooth', block: 'center' }), 420); }
+  else if (k === 'menus') { go('map'); setTimeout(() => setFilter('menu'), M.intro ? 380 : 1900); }
+}
 function openRules() { $('#rulesList').innerHTML = RULES.map((r, i) => `<li><span class="n">${i + 1}</span><span>${esc(L(r))}</span></li>`).join(''); openSheet('rulesSheet'); }
 function openStd() { $('#stdBody').innerHTML = stdHTML() + `<p class="std-note">${ART.ic('route', 15, 2.2)}<span>${t('std_note')}</span></p>`; openSheet('stdSheet'); }
 function initTicket() {
@@ -3700,11 +3928,30 @@ function renderAll(langChanged = false) {
   renderMapBase(); renderChips(); renderPins(false); renderRouteCard();
   if (M.sel) openPlace(M.sel, false);
   if (PD.id) { const y = $('#pdScroll').scrollTop; $('#pd').innerHTML = pdHTML(PD.id); bindPD(); $('#pdScroll').scrollTop = y; }
-  renderFest(); renderMy();
+  renderFest(); renderMy(); renderHome();
 }
 function bind() {
   $$('.tab').forEach(b => b.addEventListener('click', () => go(b.dataset.tab)));
   $('#logoBtn').onclick = () => go('stamp');
+  // 홈
+  $('#hmHero').addEventListener('click', e => {
+    const h = e.target.closest('[data-h]'); if (h) { homeAct(h.dataset.h, h); return; }
+    const pr = e.target.closest('.hp'); if (pr) { if (pr.dataset.place) openPD(pr.dataset.place, pr); else openBooking(pr.dataset.prog); return; }
+    const mn = e.target.closest('.hmn'); if (mn) openPD(mn.dataset.place, mn);
+  });
+  // 음료 고르기 (픽업 카드 · 보따리 시트)
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.dr'); if (!b) return;
+    const scope = b.closest('.drink').dataset.scope, d = b.dataset.d;
+    if (scope === 'bn') { BN.drink = d; renderBundleSheet(); }
+    else if (S.drink !== d) { S.drink = d; save(); renderMy(); toast(t('dr_set', { d: t('dr_' + d) }), d === 'wine' ? 'wine' : 'syrup'); }
+    buzz(6);
+  });
+  $('#bundleSheet').addEventListener('click', e => {
+    if (e.target.closest('#bnGo')) { confirmBundle(); return; }
+    const b = e.target.closest('[data-k="n"]'); if (!b || b.disabled) return;
+    BN.n = Math.max(1, Math.min(5, BN.n + +b.dataset.v)); renderBundleSheet(); buzz(6);
+  });
   $('#langBtn').onclick = e => { e.stopPropagation(); const p = $('#langPop'), was = p.classList.contains('show'); closePops(); if (!was) p.classList.add('show'); };
   $('#langPop').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setLang(b.dataset.lang); });
   $('#bellBtn').onclick = e => { e.stopPropagation(); const p = $('#notifPop'), was = p.classList.contains('show'); closePops(); if (!was) { renderNotifs(); p.classList.add('show'); } const bb = $('#bellBtn'); bb.classList.remove('ring'); void bb.offsetWidth; bb.classList.add('ring'); };
@@ -3775,7 +4022,7 @@ function bind() {
   $('#wPost').onclick = postWrite;
   // 마이
   initTicket();
-  $('#pickup').addEventListener('click', e => { const b = e.target.closest('#pkSeg button'); if (!b || S.pickup === b.dataset.v) return; S.pickup = b.dataset.v; save(); renderMy(); buzz(6); });
+  $('#pickup').addEventListener('click', e => { if (e.target.closest('#pkBuy')) { openBundle(); return; } const b = e.target.closest('#pkSeg button'); if (!b || S.pickup === b.dataset.v) return; S.pickup = b.dataset.v; save(); renderMy(); buzz(6); });
   $('#menu').addEventListener('click', e => {
     const b = e.target.closest('.mi'); if (!b) return; const a = b.dataset.a;
     if (a === 'rules') openRules();
